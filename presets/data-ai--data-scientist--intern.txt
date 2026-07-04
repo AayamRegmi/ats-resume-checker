@@ -1,0 +1,18 @@
+Data Scientist Intern
+Halcyon Health Tech - Remote
+
+About the role
+Build models that predict patient outcomes and power product features.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- Python: Pandas, NumPy, scikit-learn
+- Statistics and hypothesis testing
+- SQL and working with production data
+- Communicating findings to non-technical stakeholders
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- Spark or distributed processing
+- LLMs or generative AI exposure

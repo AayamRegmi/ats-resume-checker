@@ -1,0 +1,20 @@
+Frontend Developer
+Brightlane Apps - Remote
+
+About the role
+Build polished, accessible user interfaces for our B2B web products.
+
+Requirements
+- 2-4 years of professional experience
+- Strong JavaScript and TypeScript
+- React and modern state management (Redux or similar)
+- HTML, CSS and responsive layout
+- Consuming REST APIs or GraphQL
+- Next.js or server-side rendering
+- Testing with Jest, Cypress or Playwright
+- Bachelor's degree in a related field or equivalent experience
+
+Nice to have
+- Figma and design systems
+- Node.js
+- CI/CD familiarity

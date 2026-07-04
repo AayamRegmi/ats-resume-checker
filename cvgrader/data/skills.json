@@ -206,6 +206,21 @@
     {"name": "Student Assessment", "aliases": ["student assessment", "grading", "progress reporting", "progress reports", "formative assessment"]},
     {"name": "Teaching License", "aliases": ["teaching license", "teaching certification", "licensed teacher", "certified teacher"]},
     {"name": "Educational Technology", "aliases": ["google classroom", "canvas lms", "blackboard", "moodle", "smart board"]},
-    {"name": "Special Education", "aliases": ["special education", "iep", "504 plans"]}
+    {"name": "Special Education", "aliases": ["special education", "iep", "504 plans"]},
+    {"name": "Research Experience", "aliases": ["research experience", "research assistant", "research project", "undergraduate research", "research intern"]},
+    {"name": "Academic Publications", "aliases": ["publication", "publications", "peer-reviewed", "journal paper", "conference paper", "first author", "co-author"]},
+    {"name": "Academic Writing", "aliases": ["academic writing", "thesis", "dissertation", "literature review", "research proposal"]},
+    {"name": "Strong Academic Record", "aliases": ["gpa", "cgpa", "dean's list", "academic excellence", "first class", "distinction", "top of class"]},
+    {"name": "English Proficiency", "aliases": ["ielts", "toefl", "duolingo english test", "english proficiency", "cefr", "c1 english", "b2 english"]},
+    {"name": "German Language", "aliases": ["german language", "goethe certificate", "b1 german", "b2 german", "testdaf"]},
+    {"name": "GRE/GMAT", "aliases": ["gre", "gmat"]},
+    {"name": "Extracurricular Activities", "aliases": ["extracurricular", "student club", "student council", "student union", "hackathon", "olympiad", "debate club", "case competition"]},
+    {"name": "Volunteering", "aliases": ["volunteering", "volunteer", "community service", "community outreach"]},
+    {"name": "Tutoring/TA", "aliases": ["teaching assistant", "tutoring", "tutor", "peer mentoring"]},
+    {"name": "Wet Lab Skills", "aliases": ["wet lab", "pcr", "western blot", "cell culture", "microscopy", "elisa", "chromatography", "spectroscopy", "titration", "lab notebook", "aseptic technique"]},
+    {"name": "Scholarships & Grants", "aliases": ["scholarship", "fellowship", "research grant", "grant writing", "funding awarded"]},
+    {"name": "Conference Presentations", "aliases": ["conference presentation", "poster presentation", "oral presentation", "presented research"]},
+    {"name": "LaTeX", "aliases": ["latex", "overleaf"]},
+    {"name": "International Experience", "aliases": ["international experience", "study abroad", "exchange program", "erasmus", "student mobility", "cross-cultural"]}
   ]
 }

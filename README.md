@@ -16,7 +16,7 @@ No LLM, no server, no tracking — it's deterministic parsing + lexicon matching
 
 ## Web version (no install)
 
-**https://aayamregmi.github.io/cv-grader/** — the same engine ported to JavaScript, running entirely in your browser. Your CV is never uploaded anywhere: PDF parsing (pdf.js), DOCX parsing (JSZip) and all scoring happen locally. Drag in a resume, paste a job posting (or pick from **38 built-in sample postings across 8 job-market categories** in `presets/`), and get the full color-coded report. Light/dark theme toggle included.
+**https://aayamregmi.github.io/cv-grader/** — the same engine ported to JavaScript, running entirely in your browser. Your CV is never uploaded anywhere: PDF parsing (pdf.js), DOCX parsing (JSZip) and all scoring happen locally. Drag in a resume, paste a job posting — or search the **97 built-in sample postings** (`presets/`): 47 roles and programmes across 9 categories from software to nursing to Erasmus/Fulbright/DAAD applications, 18 of them with **intern → junior → mid → senior variants** behind a level switch. Light/dark theme toggle included.
 
 The web app lives in `docs/` and is served by GitHub Pages. The two implementations share the same lexicons (`cvgrader/data/*.json`); after editing them, run `python scripts/build_web_data.py` to regenerate `docs/data.js`. One known fidelity gap: for PDFs, the CLI detects ruled tables via pdfplumber while the web version uses a text-gap heuristic and can miss thin-ruled tables — the Python CLI is the reference implementation.
 

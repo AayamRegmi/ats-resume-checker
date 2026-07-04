@@ -1,0 +1,18 @@
+Frontend Developer Intern
+Brightlane Apps - Remote
+
+About the role
+Build polished, accessible user interfaces for our B2B web products.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- Strong JavaScript and TypeScript
+- React and modern state management (Redux or similar)
+- HTML, CSS and responsive layout
+- Consuming REST APIs or GraphQL
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- Figma and design systems
+- Node.js

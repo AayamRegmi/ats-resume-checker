@@ -1,0 +1,18 @@
+Software Engineer (Backend) Intern
+Nimbus Analytics - Seattle, WA (Hybrid)
+
+About the role
+Design, build and scale the backend services behind our analytics platform.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- Strong programming in Python or Java
+- SQL and relational databases (PostgreSQL or MySQL)
+- Building REST APIs
+- Git-based workflow
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- GraphQL
+- Kafka or event streaming

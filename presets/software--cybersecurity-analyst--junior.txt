@@ -1,0 +1,17 @@
+Junior Cybersecurity Analyst
+Sentinel Ridge Security - Hybrid
+
+About the role
+Monitor, detect and respond to threats across our clients' environments.
+
+Requirements
+- 0-1 years of professional experience (internships and projects count)
+- Bachelor's degree or equivalent practical experience
+- Network security fundamentals: firewalls, VPN, DNS, TCP/IP
+- Vulnerability management basics
+- Security monitoring and log analysis
+
+Nice to have
+- Security+ or CISSP progress
+- Python or PowerShell scripting
+- Cloud security (AWS or Azure)

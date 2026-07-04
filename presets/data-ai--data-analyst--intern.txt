@@ -1,0 +1,18 @@
+Data Analyst Intern
+Corven Retail Group - Hybrid
+
+About the role
+Turn messy operational data into dashboards and decisions.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- Strong SQL for querying relational databases
+- Excel including pivot tables and VLOOKUP
+- Dashboards with Tableau, Power BI or Looker
+- Statistics fundamentals
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- Google Analytics
+- dbt or data modeling exposure

@@ -1,166 +1,22 @@
-"""Generate presets/<category>--<slug>.txt job-description presets.
+"""Generate presets/*.txt job-description presets.
 
-These feed the web app's "sample job" dropdown (embedded into docs/data.js by
-build_web_data.py) and can also be used with the CLI:  cvgrader cv.pdf --jd presets/...
+Two kinds:
+- single presets:   presets/<category>--<slug>.txt
+- leveled presets:  presets/<category>--<slug>--<level>.txt  (intern/junior/mid/senior)
 
-Wording deliberately uses terms from cvgrader/data/skills.json so keyword
-matching behaves the way it would on a real posting.
+Leveled roles are generated from one spec per role: shared core requirements,
+plus advanced requirements that appear from mid level up, with level-appropriate
+years/degree lines - mirroring how real postings scale by seniority.
+
+The web app groups level variants under one picker entry with a level switch.
+Wording deliberately uses terms from cvgrader/data/skills.json.
 """
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "presets"
 
+# --------------------------------------------------------------- single presets
 P = {}
-
-# ------------------------------------------------------------- software & IT
-P["software--junior-software-engineer"] = """Junior Software Engineer
-Bluepine Technologies - Remote
-
-About the role
-Help build and maintain our web platform and internal APIs alongside senior engineers.
-
-Requirements
-- Bachelor's degree in Computer Science or equivalent practical experience
-- Solid programming fundamentals in Python or Java
-- Understanding of SQL and relational databases (PostgreSQL or MySQL)
-- Familiarity with Git and version control workflows
-- Experience building REST APIs (coursework or personal projects count)
-- Basic knowledge of HTML, CSS and JavaScript
-
-Nice to have
-- Internship or work experience in software development
-- Exposure to Docker or cloud platforms (AWS, Azure or GCP)
-- React or another modern frontend framework
-- Unit testing experience (Pytest, JUnit or similar)
-"""
-
-P["software--senior-backend-engineer"] = """Senior Backend Engineer
-Nimbus Analytics - Seattle, WA (Hybrid)
-
-About the role
-Design, build and scale the backend services behind our analytics platform.
-
-Requirements
-- 5+ years of professional software engineering experience
-- Strong Python and SQL skills
-- Experience designing microservices and REST APIs
-- Hands-on with AWS (Lambda, ECS or EKS)
-- Docker and Kubernetes in production
-- CI/CD pipelines (GitHub Actions, Jenkins or similar)
-- PostgreSQL or a similar relational database
-- Bachelor's degree in Computer Science or a related field
-
-Nice to have
-- Terraform or other infrastructure-as-code tooling
-- Kafka or other event streaming platforms
-- GraphQL
-- Experience mentoring engineers
-"""
-
-P["software--frontend-developer"] = """Frontend Developer
-Brightlane Apps - Remote
-
-About the role
-Build polished, accessible user interfaces for our B2B web products.
-
-Requirements
-- 2+ years building production web applications
-- Strong JavaScript and TypeScript
-- React and modern state management (Redux or similar)
-- HTML, CSS and responsive layout skills
-- Experience consuming REST APIs or GraphQL
-- Git-based workflow and code review culture
-
-Nice to have
-- Next.js or server-side rendering experience
-- Accessibility (WCAG) knowledge
-- Testing with Jest, Cypress or Playwright
-- Familiarity with Figma and design systems
-"""
-
-P["software--fullstack-developer"] = """Full-Stack Web Developer
-Everest Digital - Kathmandu, Nepal (Hybrid)
-
-About the role
-Own features end to end - database to UI - for client web applications.
-
-Requirements
-- 1+ years of experience building web applications (internships and freelance count)
-- JavaScript and at least one modern framework (React, Vue or Angular)
-- Backend experience with Node.js, Django, Laravel or Spring
-- SQL and relational database design (MySQL or PostgreSQL)
-- REST API design and integration
-- Git-based workflow
-
-Nice to have
-- TypeScript
-- Docker and basic CI/CD
-- Experience deploying to AWS or a similar cloud
-- UI/UX sensibility and familiarity with Figma
-"""
-
-P["software--mobile-developer"] = """Mobile Developer
-Pocketworks Studio - Remote
-
-About the role
-Ship and maintain our consumer mobile apps on iOS and Android.
-
-Requirements
-- 2+ years of mobile development experience
-- Swift and iOS development, or Kotlin and Android
-- Experience with REST APIs and offline data handling
-- App Store / Play Store release experience
-- Git and code review workflow
-
-Nice to have
-- React Native or Flutter
-- Unit testing and UI test automation
-- CI/CD for mobile builds
-- Push notifications and analytics integration
-"""
-
-P["software--devops-engineer"] = """DevOps Engineer
-Skyloft Systems - Remote
-
-About the role
-Own the reliability, automation and deployment pipeline of our cloud platform.
-
-Requirements
-- 3+ years in DevOps, SRE or platform engineering
-- Strong AWS experience (EC2, S3, Lambda, RDS)
-- Docker and Kubernetes in production
-- Terraform or other infrastructure-as-code
-- CI/CD pipelines (GitHub Actions, GitLab CI or Jenkins)
-- Linux administration and shell scripting
-- Monitoring and observability (Prometheus, Grafana or Datadog)
-
-Nice to have
-- Python or Go for tooling
-- Ansible configuration management
-- Cost optimization experience
-- Security and IAM best practices
-"""
-
-P["software--qa-engineer"] = """QA Automation Engineer
-Verity Labs - Remote
-
-About the role
-Build and maintain the automated test suites that guard our releases.
-
-Requirements
-- 2+ years in quality assurance or test automation
-- Test automation with Selenium, Cypress or Playwright
-- API testing and integration testing experience
-- Writing test plans and regression testing
-- Jira or similar tracking tools
-- Basic SQL for data validation
-
-Nice to have
-- JavaScript or Python scripting
-- CI/CD pipeline integration of test suites
-- Performance or load testing
-- Mobile app testing
-"""
 
 P["software--it-support-specialist"] = """IT Support Specialist
 Harborview Group - On-site
@@ -182,219 +38,6 @@ Nice to have
 - Hardware troubleshooting and asset management
 """
 
-P["software--cybersecurity-analyst"] = """Cybersecurity Analyst
-Sentinel Ridge Security - Hybrid
-
-About the role
-Monitor, detect and respond to threats across our clients' environments.
-
-Requirements
-- 2+ years in information security or a SOC role
-- SIEM experience (Splunk or similar) and incident response
-- Vulnerability management and threat detection
-- Network security fundamentals: firewalls, VPN, DNS, TCP/IP
-- Understanding of IAM, OAuth and SSO concepts
-- Bachelor's degree in a related field or equivalent experience
-
-Nice to have
-- Security+ / CISSP or working toward certification
-- Compliance frameworks: SOC 2, ISO 27001, HIPAA or PCI DSS
-- Scripting in Python or PowerShell
-- Cloud security (AWS or Azure)
-"""
-
-P["software--cloud-architect"] = """Cloud Solutions Architect
-Meridian Cloud Partners - Remote
-
-About the role
-Design secure, cost-effective cloud architectures for enterprise customers.
-
-Requirements
-- 5+ years in cloud engineering or architecture
-- Deep AWS experience; Azure or GCP a strong second
-- Kubernetes, Docker and serverless architectures
-- Terraform and infrastructure-as-code at scale
-- Networking, IAM and security best practices
-- Stakeholder communication and architecture documentation
-
-Nice to have
-- AWS Certified Solutions Architect
-- Cost optimization and FinOps experience
-- Migration projects from on-premise to cloud
-- Mentoring or team leadership
-"""
-
-# ---------------------------------------------------------------- data & AI
-P["data-ai--data-analyst"] = """Data Analyst
-Corven Retail Group - Hybrid
-
-About the role
-Turn messy operational data into dashboards and decisions for merchandising and ops.
-
-Requirements
-- 1+ years in an analyst role (internships count)
-- Strong SQL for querying relational databases
-- Excel including pivot tables and VLOOKUP
-- Dashboarding with Tableau, Power BI or Looker
-- Statistics fundamentals and data analysis rigor
-- Clear written and verbal communication
-
-Nice to have
-- Python (Pandas) for analysis
-- A/B testing or experimentation exposure
-- Google Analytics
-- Bachelor's degree in a quantitative field
-"""
-
-P["data-ai--data-scientist"] = """Data Scientist
-Halcyon Health Tech - Remote
-
-About the role
-Build models that predict patient outcomes and power product features.
-
-Requirements
-- 2+ years in data science or applied ML
-- Strong Python: Pandas, NumPy, scikit-learn
-- Statistics, hypothesis testing and A/B testing
-- SQL and working with production data
-- Communicating findings to non-technical stakeholders
-- Master's degree or Bachelor's with strong project portfolio
-
-Nice to have
-- Deep learning with PyTorch or TensorFlow
-- Spark or distributed data processing
-- Experiment design at scale
-- Domain experience in healthcare
-"""
-
-P["data-ai--data-engineer"] = """Data Engineer
-Northbeam Logistics - Hybrid
-
-About the role
-Build and operate the pipelines that feed our analytics and ML platforms.
-
-Requirements
-- 2+ years building data pipelines in production
-- Strong SQL and Python
-- ETL/ELT design and data warehousing concepts
-- Airflow or similar orchestration
-- Spark or other large-scale processing
-- Snowflake, BigQuery or Redshift experience
-
-Nice to have
-- dbt
-- Kafka or event streaming
-- Docker, Kubernetes and CI/CD
-- Data quality and observability tooling
-"""
-
-P["data-ai--machine-learning-engineer"] = """Machine Learning Engineer
-Arclight AI - Remote
-
-About the role
-Take models from notebook to production and keep them healthy at scale.
-
-Requirements
-- 3+ years in ML engineering or backend engineering with ML exposure
-- Strong Python and software engineering fundamentals
-- PyTorch or TensorFlow in production
-- Model deployment: Docker, Kubernetes, REST APIs
-- Data pipelines and feature engineering
-- SQL and cloud experience (AWS or GCP)
-
-Nice to have
-- LLMs, RAG or generative AI systems
-- MLOps tooling and CI/CD for models
-- Spark or distributed training
-- NLP or computer vision background
-"""
-
-P["data-ai--ml-intern"] = """Machine Learning Intern
-Kritim AI Labs - Kathmandu / Remote
-
-About the role
-Join our applied ML team for a 6-month internship building and evaluating
-models for document understanding and NLP products.
-
-Requirements
-- Pursuing or recently completed a Bachelor's degree in Computer Science,
-  Mathematics or a related field
-- Strong Python skills
-- Hands-on machine learning fundamentals (coursework, research or projects)
-- Experience with NumPy, Pandas and scikit-learn
-- Familiarity with PyTorch or TensorFlow
-- Understanding of statistics and model evaluation
-
-Nice to have
-- NLP or computer vision project experience
-- Published research or a public portfolio (GitHub, Kaggle)
-- SQL
-- Exposure to LLMs or generative AI
-"""
-
-# ---------------------------------------------------------- product & design
-P["product-design--product-manager"] = """Product Manager
-Fernwood Software - Hybrid
-
-About the role
-Own the roadmap for our SMB invoicing product from discovery to launch.
-
-Requirements
-- 3+ years in product management
-- Roadmap ownership and product strategy
-- User research and data-driven decision making
-- Agile delivery with engineering teams (Scrum, Jira)
-- Stakeholder management across sales, support and engineering
-- Defining and tracking OKRs / KPIs
-
-Nice to have
-- SQL or analytics self-service (Google Analytics, Looker)
-- Technical background or CS degree
-- B2B SaaS experience
-- Pricing and packaging exposure
-"""
-
-P["product-design--ux-designer"] = """UX Designer
-Loomfield Studio - Remote
-
-About the role
-Design intuitive flows for our consumer finance app, from research to handoff.
-
-Requirements
-- 2+ years in UX or product design
-- Figma proficiency including components and prototyping
-- User research and usability testing
-- Wireframing, user flows and interaction design
-- Working within and contributing to design systems
-- Portfolio demonstrating shipped work
-
-Nice to have
-- Accessibility (WCAG) expertise
-- Basic HTML/CSS understanding
-- Motion design
-- UX writing
-"""
-
-P["product-design--graphic-designer"] = """Graphic Designer
-Copperleaf Creative - Hybrid
-
-About the role
-Produce brand, campaign and social assets for a roster of consumer clients.
-
-Requirements
-- 2+ years of graphic design experience
-- Expert Photoshop, Illustrator and InDesign
-- Brand identity and layout design
-- Preparing print-ready and digital assets
-- Managing multiple deadlines with attention to detail
-
-Nice to have
-- Figma
-- Motion graphics (After Effects, Premiere Pro)
-- Photography or retouching
-- Social media content formats
-"""
-
 P["product-design--technical-writer"] = """Technical Writer
 Quillstone Docs - Remote
 
@@ -413,28 +56,6 @@ Nice to have
 - OpenAPI / Swagger specs
 - Developer background
 - Content strategy experience
-"""
-
-# ------------------------------------------------------------------ marketing
-P["marketing--digital-marketing-specialist"] = """Digital Marketing Specialist
-Tidewater Brands - Hybrid
-
-About the role
-Run multi-channel campaigns for our direct-to-consumer product lines.
-
-Requirements
-- 2+ years in digital marketing
-- Paid search and paid social: Google Ads, Meta Ads
-- Google Analytics (GA4) and campaign reporting
-- Email marketing (Mailchimp, Klaviyo or similar)
-- SEO fundamentals and content marketing
-- Budget management across channels
-
-Nice to have
-- HubSpot or marketing automation
-- Copywriting skills
-- A/B testing of landing pages
-- E-commerce experience
 """
 
 P["marketing--social-media-manager"] = """Social Media Manager
@@ -497,7 +118,6 @@ Nice to have
 - Basic Google Analytics
 """
 
-# ------------------------------------------------------------ sales & support
 P["sales-support--sales-development-rep"] = """Sales Development Representative (SDR)
 Crestline Software - Hybrid
 
@@ -597,27 +217,6 @@ Nice to have
 - Microsoft Office
 """
 
-# --------------------------------------------------------------------- finance
-P["finance--financial-analyst"] = """Financial Analyst
-Granite Peak Capital - Hybrid
-
-About the role
-Own budgeting, forecasting and monthly reporting for two business units.
-
-Requirements
-- 2+ years in FP&A, financial analysis or accounting
-- Advanced Excel: financial modeling, pivot tables
-- Forecasting, budgeting and variance analysis
-- Financial reporting and month-end support
-- Bachelor's degree in Finance, Accounting or Economics
-
-Nice to have
-- SQL or Power BI
-- ERP experience (SAP, NetSuite or Oracle)
-- CFA progress
-- Valuation / DCF modeling
-"""
-
 P["finance--staff-accountant"] = """Staff Accountant
 Harlow & Finch LLP - On-site
 
@@ -639,7 +238,6 @@ Nice to have
 - Payroll processing
 """
 
-# ------------------------------------------------------------ HR, ops & admin
 P["hr-operations--hr-generalist"] = """HR Generalist
 Copperfield Manufacturing - On-site
 
@@ -678,27 +276,6 @@ Nice to have
 - Employer branding
 - HRIS familiarity (Workday)
 - Agency and in-house experience
-"""
-
-P["hr-operations--project-manager"] = """Project Manager
-Ironbridge Consulting - Hybrid
-
-About the role
-Deliver client projects on time and on budget across mixed teams.
-
-Requirements
-- 3+ years of project management experience
-- Project planning, scheduling and budgeting
-- Agile and waterfall delivery; Scrum ceremonies
-- Jira, Confluence and MS Project
-- Risk management and status reporting
-- Stakeholder management up to executive level
-
-Nice to have
-- PMP or Certified Scrum Master
-- Software delivery background
-- Vendor management
-- Change management
 """
 
 P["hr-operations--operations-manager"] = """Operations Manager
@@ -763,7 +340,6 @@ Nice to have
 - Notary or legal office experience
 """
 
-# ----------------------------------------------------- healthcare & education
 P["health-education--registered-nurse"] = """Registered Nurse (Med-Surg)
 St. Alban's Medical Center - On-site
 
@@ -805,12 +381,594 @@ Nice to have
 - Special education awareness
 """
 
+# -------------------------------------------- academic, degrees & scholarships
+P["academic--erasmus-mundus-masters"] = """Erasmus Mundus Joint Master Scholarship
+European Commission funded programme - multiple EU universities
+
+About the programme
+Fully funded two-year joint master's degree studied in at least two European
+countries. Selection is CV-based plus motivation letter; academic merit and
+international outlook weigh heaviest.
+
+Requirements
+- Bachelor's degree in a relevant field (completed or final year)
+- Strong academic record (GPA / distinction level grades)
+- English proficiency: IELTS 6.5+ or TOEFL 90+ (or equivalent CEFR C1)
+- Demonstrated motivation for the field of study
+- Extracurricular or volunteering engagement
+
+Nice to have
+- Research experience or a thesis project
+- International experience (exchange program, study abroad)
+- Publications or conference presentations
+- Second European language
+- Scholarship or academic awards
+"""
+
+P["academic--erasmus-exchange-semester"] = """Erasmus+ Exchange Semester
+Home university international office - partner universities across Europe
+
+About the programme
+One or two semesters abroad at a partner university with an Erasmus+ mobility
+grant. Ranked on academic record and motivation.
+
+Requirements
+- Currently enrolled Bachelor's or Master's student
+- Strong academic record (GPA above faculty threshold)
+- English proficiency (B2 or higher; IELTS/TOEFL accepted)
+- Motivation and study plan matching the host university
+- Good standing with no outstanding course deficits
+
+Nice to have
+- Extracurricular involvement (student club, student council)
+- Volunteering or community service
+- Additional languages of the host country
+- Prior international experience
+"""
+
+P["academic--research-lab-assistant-ai"] = """Research Assistant - AI/ML Lab
+University Computer Science Department
+
+About the position
+Part-time research assistant supporting graduate research in machine learning.
+
+Requirements
+- Enrolled in or completed a Bachelor's in Computer Science or related field
+- Strong Python; NumPy, Pandas and scikit-learn
+- Machine learning fundamentals (coursework or projects)
+- Ability to read papers and write a literature review
+- Git for collaborative research code
+
+Nice to have
+- PyTorch or TensorFlow experience
+- Research experience or publications
+- LaTeX for paper writing
+- Strong academic record (GPA, dean's list)
+"""
+
+P["academic--wet-lab-research-assistant"] = """Research Assistant - Molecular Biology Wet Lab
+University Life Sciences Institute
+
+About the position
+Support ongoing research projects with hands-on bench work and data collection.
+
+Requirements
+- Bachelor's degree (or final year) in Biology, Biochemistry or related field
+- Wet lab skills: PCR, cell culture, western blot or ELISA
+- Accurate lab notebook keeping and aseptic technique
+- Data analysis basics (Excel or R)
+- Attention to detail and reliability
+
+Nice to have
+- Microscopy or chromatography experience
+- Research experience beyond coursework
+- Statistics coursework
+- Poster presentation or publication
+"""
+
+P["academic--phd-position-stem"] = """PhD Position (STEM)
+University Doctoral School - funded position
+
+About the position
+Fully funded doctoral position; selection weighs research potential above all.
+
+Requirements
+- Master's degree in a relevant STEM field
+- Research experience with a completed thesis
+- Academic writing ability (research proposal required)
+- Statistics and data analysis competence
+- English proficiency (IELTS/TOEFL if not native)
+
+Nice to have
+- Peer-reviewed publications or conference presentations
+- LaTeX
+- Teaching assistant or tutoring experience
+- Research grant or scholarship history
+- Programming (Python, R or MATLAB)
+"""
+
+P["academic--masters-program-cs"] = """M.S. in Computer Science - Admission
+Graduate School of Engineering
+
+About the programme
+Two-year thesis-track master's. Admissions reviews CV, transcripts and statement.
+
+Requirements
+- Bachelor's degree in Computer Science or closely related field
+- Strong academic record (GPA 3.0+/4.0 or equivalent)
+- Programming proficiency (Python, Java or C++)
+- Core CS coursework: algorithms, data structures, databases (SQL)
+- English proficiency for international applicants (TOEFL/IELTS)
+
+Nice to have
+- GRE scores
+- Research experience or publications
+- Personal projects on GitHub
+- Relevant internships
+- Extracurricular or hackathon participation
+"""
+
+P["academic--mba-program"] = """MBA Programme - Admission
+Graduate School of Business
+
+About the programme
+Full-time two-year MBA. Holistic review of CV, essays and test scores.
+
+Requirements
+- Bachelor's degree in any discipline
+- 2+ years of professional work experience
+- GMAT or GRE score
+- Demonstrated leadership and career progression
+- English proficiency for international applicants (TOEFL/IELTS)
+
+Nice to have
+- Team management or people management experience
+- Quantitative skills: Excel, financial analysis, statistics
+- Community service or volunteering
+- International experience
+- Entrepreneurial or business development track record
+"""
+
+P["academic--fulbright-scholarship"] = """Fulbright Foreign Student Scholarship
+Binational Fulbright Commission
+
+About the award
+Fully funded graduate study in the United States. Selection emphasizes academic
+merit, leadership and cultural ambassadorship.
+
+Requirements
+- Bachelor's degree with a strong academic record (GPA)
+- English proficiency: TOEFL or IELTS at competitive scores
+- Demonstrated leadership experience
+- Community service or volunteering commitment
+- Clear study/research objective in the chosen field
+
+Nice to have
+- Research experience or publications
+- Teaching, tutoring or mentoring experience
+- Extracurricular achievements and awards
+- International or cross-cultural experience
+"""
+
+P["academic--daad-masters-scholarship"] = """DAAD Master's Scholarship (Germany)
+German Academic Exchange Service
+
+About the award
+Funded master's study at a German university for international graduates.
+
+Requirements
+- Bachelor's degree with above-average academic record (GPA)
+- Typically 2+ years since graduation with related work experience
+- English proficiency (IELTS/TOEFL) for English-taught programmes
+- Motivation aligned with development or research goals
+- Academic references
+
+Nice to have
+- German language skills (B1/B2 or Goethe certificate)
+- Research experience or publications
+- Volunteering or community engagement
+- Scholarship or academic awards history
+"""
+
+P["academic--university-teaching-assistant"] = """Undergraduate Teaching Assistant
+University Department - semester contract
+
+About the position
+Support a core course: labs, office hours, grading and student questions.
+
+Requirements
+- Currently enrolled student in the department with strong academic record
+- Completed the course (or equivalent) with top grades
+- Tutoring, peer mentoring or teaching assistant experience preferred
+- Reliable grading and progress reporting
+- Clear communication and patience
+
+Nice to have
+- Lesson planning or workshop facilitation
+- Experience with the course's tools (e.g. Python, MATLAB or lab equipment)
+- Dean's list or academic awards
+"""
+
+P["academic--summer-research-internship"] = """Summer Research Internship (REU-style)
+University Research Programme - 10 weeks, funded
+
+About the programme
+Paid summer research placement for undergraduates in STEM labs.
+
+Requirements
+- Enrolled undergraduate in a STEM field
+- Strong academic record (GPA 3.0+)
+- Coursework foundation relevant to the host lab
+- Basic data analysis (Python, R, MATLAB or Excel)
+- Motivation for research and graduate study
+
+Nice to have
+- Prior research experience or lab coursework
+- Poster or oral presentation experience
+- Programming projects on GitHub
+- Statistics coursework
+"""
+
+# ------------------------------------------------------------- leveled roles
+# Each spec: title, company/location, about, core reqs (all levels),
+# advanced reqs (appear from mid level; senior gets all), nice-to-haves.
+LEVEL_ORDER = ["intern", "junior", "mid", "senior"]
+LEVEL_TITLES = {
+    "intern": "{title} Intern",
+    "junior": "Junior {title}",
+    "mid": "{title}",
+    "senior": "Senior {title}",
+}
+LEVEL_YEARS = {
+    "intern": "Currently enrolled in a Bachelor's degree in a related field",
+    "junior": "0-1 years of professional experience (internships and projects count)",
+    "mid": "2-4 years of professional experience",
+    "senior": "5+ years of professional experience",
+}
+
+ROLES = {
+    "software--software-engineer": {
+        "title": "Software Engineer (Backend)",
+        "company": "Nimbus Analytics - Seattle, WA (Hybrid)",
+        "about": "Design, build and scale the backend services behind our analytics platform.",
+        "core": [
+            "Strong programming in Python or Java",
+            "SQL and relational databases (PostgreSQL or MySQL)",
+            "Building REST APIs",
+            "Git-based workflow",
+        ],
+        "advanced": [
+            "Designing microservices architectures",
+            "AWS or another cloud platform in production",
+            "Docker and Kubernetes",
+            "CI/CD pipelines (GitHub Actions or Jenkins)",
+        ],
+        "nth": ["GraphQL", "Kafka or event streaming", "Terraform / infrastructure-as-code"],
+    },
+    "software--frontend-developer": {
+        "title": "Frontend Developer",
+        "company": "Brightlane Apps - Remote",
+        "about": "Build polished, accessible user interfaces for our B2B web products.",
+        "core": [
+            "Strong JavaScript and TypeScript",
+            "React and modern state management (Redux or similar)",
+            "HTML, CSS and responsive layout",
+            "Consuming REST APIs or GraphQL",
+        ],
+        "advanced": [
+            "Next.js or server-side rendering",
+            "Testing with Jest, Cypress or Playwright",
+            "Performance optimization and accessibility (WCAG)",
+        ],
+        "nth": ["Figma and design systems", "Node.js", "CI/CD familiarity"],
+    },
+    "software--fullstack-developer": {
+        "title": "Full-Stack Developer",
+        "company": "Everest Digital - Kathmandu, Nepal (Hybrid)",
+        "about": "Own features end to end - database to UI - for client web applications.",
+        "core": [
+            "JavaScript and a modern framework (React, Vue or Angular)",
+            "Backend with Node.js, Django or Spring",
+            "SQL and relational database design (MySQL or PostgreSQL)",
+            "REST API design and integration",
+        ],
+        "advanced": [
+            "Docker and CI/CD",
+            "Cloud deployment (AWS or similar)",
+            "TypeScript across the stack",
+        ],
+        "nth": ["GraphQL", "UI/UX sensibility and Figma", "Testing (Jest or Pytest)"],
+    },
+    "software--mobile-developer": {
+        "title": "Mobile Developer",
+        "company": "Pocketworks Studio - Remote",
+        "about": "Ship and maintain our consumer mobile apps on iOS and Android.",
+        "core": [
+            "Swift and iOS development, or Kotlin and Android",
+            "REST APIs and offline data handling",
+            "Git and code review workflow",
+        ],
+        "advanced": [
+            "App Store / Play Store release ownership",
+            "CI/CD for mobile builds",
+            "Unit testing and UI test automation",
+        ],
+        "nth": ["React Native or Flutter", "Push notifications and analytics", "Performance profiling"],
+    },
+    "software--devops-engineer": {
+        "title": "DevOps Engineer",
+        "company": "Skyloft Systems - Remote",
+        "about": "Own the reliability, automation and deployment pipeline of our cloud platform.",
+        "core": [
+            "Linux administration and shell scripting",
+            "AWS fundamentals (EC2, S3, RDS)",
+            "Docker",
+            "CI/CD pipelines (GitHub Actions, GitLab CI or Jenkins)",
+        ],
+        "advanced": [
+            "Kubernetes in production",
+            "Terraform / infrastructure-as-code at scale",
+            "Monitoring and observability (Prometheus, Grafana or Datadog)",
+        ],
+        "nth": ["Python or Go for tooling", "Ansible", "IAM and security best practices"],
+    },
+    "software--qa-engineer": {
+        "title": "QA Engineer",
+        "company": "Verity Labs - Remote",
+        "about": "Build and maintain the automated test suites that guard our releases.",
+        "core": [
+            "Test planning and regression testing",
+            "Test automation with Selenium, Cypress or Playwright",
+            "API and integration testing",
+            "Jira or similar tracking tools",
+        ],
+        "advanced": [
+            "Test suites integrated into CI/CD pipelines",
+            "Performance or load testing",
+        ],
+        "nth": ["JavaScript or Python scripting", "SQL for data validation", "Mobile app testing"],
+    },
+    "software--cybersecurity-analyst": {
+        "title": "Cybersecurity Analyst",
+        "company": "Sentinel Ridge Security - Hybrid",
+        "about": "Monitor, detect and respond to threats across our clients' environments.",
+        "core": [
+            "Network security fundamentals: firewalls, VPN, DNS, TCP/IP",
+            "Vulnerability management basics",
+            "Security monitoring and log analysis",
+        ],
+        "advanced": [
+            "SIEM operation (Splunk or similar) and incident response",
+            "IAM, OAuth and SSO",
+            "Compliance frameworks: SOC 2, ISO 27001 or HIPAA",
+        ],
+        "nth": ["Security+ or CISSP progress", "Python or PowerShell scripting", "Cloud security (AWS or Azure)"],
+    },
+    "software--cloud-architect": {
+        "title": "Cloud Solutions Architect",
+        "company": "Meridian Cloud Partners - Remote",
+        "about": "Design secure, cost-effective cloud architectures for enterprise customers.",
+        "levels": ["mid", "senior"],
+        "core": [
+            "Deep AWS experience; Azure or GCP a strong second",
+            "Kubernetes, Docker and serverless architectures",
+            "Terraform and infrastructure-as-code",
+            "Networking, IAM and security best practices",
+        ],
+        "advanced": [
+            "Architecture documentation and stakeholder communication",
+            "Cost optimization / FinOps",
+            "Migration projects from on-premise to cloud",
+        ],
+        "nth": ["AWS Certified Solutions Architect", "Multi-account governance", "Mentoring engineers"],
+    },
+    "data-ai--data-analyst": {
+        "title": "Data Analyst",
+        "company": "Corven Retail Group - Hybrid",
+        "about": "Turn messy operational data into dashboards and decisions.",
+        "core": [
+            "Strong SQL for querying relational databases",
+            "Excel including pivot tables and VLOOKUP",
+            "Dashboards with Tableau, Power BI or Looker",
+            "Statistics fundamentals",
+        ],
+        "advanced": [
+            "Python (Pandas) for analysis",
+            "A/B testing and experimentation",
+            "Stakeholder reporting and data storytelling",
+        ],
+        "nth": ["Google Analytics", "dbt or data modeling exposure", "Retail or e-commerce domain experience"],
+    },
+    "data-ai--data-scientist": {
+        "title": "Data Scientist",
+        "company": "Halcyon Health Tech - Remote",
+        "about": "Build models that predict patient outcomes and power product features.",
+        "core": [
+            "Python: Pandas, NumPy, scikit-learn",
+            "Statistics and hypothesis testing",
+            "SQL and working with production data",
+            "Communicating findings to non-technical stakeholders",
+        ],
+        "advanced": [
+            "A/B testing and experiment design at scale",
+            "Deep learning with PyTorch or TensorFlow",
+            "Partnering with engineering on model deployment",
+        ],
+        "nth": ["Spark or distributed processing", "LLMs or generative AI exposure", "Master's degree in a quantitative field"],
+    },
+    "data-ai--data-engineer": {
+        "title": "Data Engineer",
+        "company": "Northbeam Logistics - Hybrid",
+        "about": "Build and operate the pipelines that feed our analytics and ML platforms.",
+        "core": [
+            "Strong SQL and Python",
+            "ETL/ELT design and data warehousing concepts",
+            "Airflow or similar orchestration",
+        ],
+        "advanced": [
+            "Spark or other large-scale processing",
+            "Snowflake, BigQuery or Redshift",
+            "Data quality and observability tooling",
+        ],
+        "nth": ["dbt", "Kafka or event streaming", "Docker, Kubernetes and CI/CD"],
+    },
+    "data-ai--machine-learning-engineer": {
+        "title": "Machine Learning Engineer",
+        "company": "Arclight AI - Remote",
+        "about": "Take models from notebook to production and keep them healthy at scale.",
+        "core": [
+            "Strong Python and software engineering fundamentals",
+            "Machine learning fundamentals (scikit-learn, Pandas, NumPy)",
+            "SQL",
+        ],
+        "advanced": [
+            "PyTorch or TensorFlow in production",
+            "Model deployment: Docker, Kubernetes, REST APIs",
+            "Data pipelines and feature engineering",
+        ],
+        "nth": ["LLMs, RAG or generative AI systems", "MLOps and CI/CD for models", "Spark or distributed training"],
+    },
+    "product-design--product-manager": {
+        "title": "Product Manager",
+        "company": "Fernwood Software - Hybrid",
+        "about": "Own the roadmap for our SMB invoicing product from discovery to launch.",
+        "titles": {"intern": "Product Management Intern", "junior": "Associate Product Manager"},
+        "core": [
+            "User research and data-driven decision making",
+            "Agile delivery with engineering teams (Scrum, Jira)",
+            "Clear written communication and stakeholder management",
+        ],
+        "advanced": [
+            "Roadmap ownership and product strategy",
+            "Defining and tracking OKRs / KPIs",
+            "Cross-functional leadership across sales, support and engineering",
+        ],
+        "nth": ["SQL or analytics self-service (Google Analytics, Looker)", "Technical background or CS degree", "B2B SaaS experience"],
+    },
+    "product-design--ux-designer": {
+        "title": "UX Designer",
+        "company": "Loomfield Studio - Remote",
+        "about": "Design intuitive flows for our consumer finance app, from research to handoff.",
+        "core": [
+            "Figma proficiency including components and prototyping",
+            "Wireframing, user flows and interaction design",
+            "User research and usability testing",
+        ],
+        "advanced": [
+            "Design system contribution",
+            "Accessibility (WCAG) expertise",
+            "Portfolio of shipped product work",
+        ],
+        "nth": ["Basic HTML/CSS understanding", "Motion design", "UX writing"],
+    },
+    "product-design--graphic-designer": {
+        "title": "Graphic Designer",
+        "company": "Copperleaf Creative - Hybrid",
+        "about": "Produce brand, campaign and social assets for consumer clients.",
+        "core": [
+            "Photoshop, Illustrator and InDesign",
+            "Layout design and typography",
+            "Preparing print-ready and digital assets",
+        ],
+        "advanced": [
+            "Brand identity systems",
+            "Client presentation skills",
+        ],
+        "nth": ["Figma", "Motion graphics (After Effects)", "Photography and retouching"],
+    },
+    "marketing--digital-marketing-specialist": {
+        "title": "Digital Marketing Specialist",
+        "company": "Tidewater Brands - Hybrid",
+        "about": "Run multi-channel campaigns for our direct-to-consumer product lines.",
+        "titles": {"senior": "Digital Marketing Manager"},
+        "core": [
+            "Paid search and paid social: Google Ads, Meta Ads",
+            "Google Analytics (GA4) and campaign reporting",
+            "Email marketing (Mailchimp, Klaviyo or similar)",
+            "SEO fundamentals and content marketing",
+        ],
+        "advanced": [
+            "Budget ownership across channels",
+            "A/B testing of landing pages",
+            "Marketing automation (HubSpot)",
+        ],
+        "nth": ["Copywriting skills", "E-commerce experience", "Social media management"],
+    },
+    "finance--financial-analyst": {
+        "title": "Financial Analyst",
+        "company": "Granite Peak Capital - Hybrid",
+        "about": "Own budgeting, forecasting and monthly reporting for two business units.",
+        "core": [
+            "Advanced Excel: financial modeling, pivot tables",
+            "Forecasting, budgeting and variance analysis",
+            "Financial reporting and month-end support",
+        ],
+        "advanced": [
+            "ERP experience (SAP, NetSuite or Oracle)",
+            "SQL or Power BI",
+            "Valuation / DCF modeling",
+        ],
+        "nth": ["CFA progress", "Presentation skills for leadership reviews", "Bachelor's degree in Finance or Accounting"],
+    },
+    "hr-operations--project-manager": {
+        "title": "Project Manager",
+        "company": "Ironbridge Consulting - Hybrid",
+        "about": "Deliver client projects on time and on budget across mixed teams.",
+        "levels": ["mid", "senior"],
+        "core": [
+            "Project planning, scheduling and budgeting",
+            "Agile and waterfall delivery; Scrum ceremonies",
+            "Jira, Confluence and MS Project",
+            "Risk management and status reporting",
+        ],
+        "advanced": [
+            "Stakeholder management up to executive level",
+            "Vendor management",
+            "Change management",
+        ],
+        "nth": ["PMP or Certified Scrum Master", "Software delivery background", "Programme/portfolio exposure"],
+    },
+}
+
+
+def build_leveled(key: str, spec: dict) -> dict:
+    out = {}
+    for level in spec.get("levels", LEVEL_ORDER):
+        title = (spec.get("titles") or {}).get(level) or LEVEL_TITLES[level].format(title=spec["title"])
+        reqs = [LEVEL_YEARS[level]]
+        if level == "junior":
+            reqs.append("Bachelor's degree or equivalent practical experience")
+        reqs += spec["core"]
+        if level == "mid":
+            reqs += spec["advanced"][:2]
+            reqs.append("Bachelor's degree in a related field or equivalent experience")
+        elif level == "senior":
+            reqs += spec["advanced"]
+        nth = list(spec["nth"])
+        if level == "intern":
+            reqs.append("Coursework and personal projects count as experience")
+            nth = ["Prior internship or part-time experience"] + nth[:2]
+        elif level == "senior":
+            nth.append("Mentoring and technical/team leadership")
+        body = [title, spec["company"], "", "About the role", spec["about"], "", "Requirements"]
+        body += [f"- {r}" for r in reqs]
+        body += ["", "Nice to have"] + [f"- {n}" for n in nth]
+        out[f"{key}--{level}"] = "\n".join(body) + "\n"
+    return out
+
 
 def main():
     OUT.mkdir(exist_ok=True)
-    for key, text in P.items():
+    for old in OUT.glob("*.txt"):
+        old.unlink()
+    all_presets = dict(P)
+    for key, spec in ROLES.items():
+        all_presets.update(build_leveled(key, spec))
+    for key, text in all_presets.items():
         (OUT / f"{key}.txt").write_text(text, encoding="utf-8")
-    print(f"wrote {len(P)} presets to {OUT}")
+    n_leveled = sum(len(s.get("levels", LEVEL_ORDER)) for s in ROLES.values())
+    print(f"wrote {len(all_presets)} preset files "
+          f"({len(P)} single + {n_leveled} level variants of {len(ROLES)} roles) to {OUT}")
 
 
 if __name__ == "__main__":

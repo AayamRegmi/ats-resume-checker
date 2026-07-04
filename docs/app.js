@@ -18,8 +18,7 @@ function effectiveTheme() {
   return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 function applyTheme(t, persist) {
-  document.documentElement.setAttribute("data-theme", t);
-  themeBtn.textContent = t === "dark" ? "☀️" : "🌙";
+  document.documentElement.setAttribute("data-theme", t); // CSS swaps the sun/moon icon
   if (persist) localStorage.setItem(THEME_KEY, t);
 }
 applyTheme(effectiveTheme(), false);
@@ -66,32 +65,100 @@ function setSample(key) {
 $("btn-strong").addEventListener("click", () => setSample("strong_resume"));
 $("btn-weak").addEventListener("click", () => setSample("weak_resume"));
 
+/* searchable preset picker */
 const CATEGORY_ORDER = ["software", "data-ai", "product-design", "marketing",
-                        "sales-support", "finance", "hr-operations", "health-education"];
+                        "sales-support", "finance", "hr-operations",
+                        "health-education", "academic"];
 const CATEGORY_LABELS = {
   "software": "Software & IT", "data-ai": "Data & AI",
   "product-design": "Product & Design", "marketing": "Marketing & Content",
   "sales-support": "Sales & Customer Success", "finance": "Finance & Accounting",
   "hr-operations": "HR, Operations & Admin", "health-education": "Healthcare & Education",
+  "academic": "Academic, Degrees & Scholarships",
 };
-const jdSelect = $("jd-preset");
-const presetById = {};
-const cats = CATEGORY_ORDER.filter((c) => CVG_PRESETS[c])
-  .concat(Object.keys(CVG_PRESETS).filter((c) => !CATEGORY_ORDER.includes(c)));
-for (const cat of cats) {
-  const og = document.createElement("optgroup");
-  og.label = CATEGORY_LABELS[cat] || cat;
-  for (const p of CVG_PRESETS[cat]) {
-    presetById[p.id] = p;
-    const opt = document.createElement("option");
-    opt.value = p.id;
-    opt.textContent = p.label;
-    og.appendChild(opt);
-  }
-  jdSelect.appendChild(og);
+const PRESET_LIST = [];
+{
+  const cats = CATEGORY_ORDER.filter((c) => CVG_PRESETS[c])
+    .concat(Object.keys(CVG_PRESETS).filter((c) => !CATEGORY_ORDER.includes(c)));
+  for (const cat of cats)
+    for (const p of CVG_PRESETS[cat])
+      PRESET_LIST.push({ ...p, cat, catLabel: CATEGORY_LABELS[cat] || cat });
 }
-jdSelect.addEventListener("change", () => {
-  if (jdSelect.value) $("jd").value = presetById[jdSelect.value].text;
+const pickerInput = $("jd-search"), panel = $("jd-panel");
+pickerInput.placeholder =
+  `Search ${PRESET_LIST.length} sample postings - jobs, degrees & scholarships…`;
+
+const presetBody = (p) => p.text || Object.values(p.levels || {})[0] || "";
+
+function renderPanel(q) {
+  q = q.trim().toLowerCase();
+  const items = PRESET_LIST.filter((p) =>
+    !q || p.label.toLowerCase().includes(q) || p.catLabel.toLowerCase().includes(q)
+      || presetBody(p).slice(0, 120).toLowerCase().includes(q));
+  if (!items.length) {
+    panel.innerHTML = `<div class="p-empty">No matching postings - paste your own job description above.</div>`;
+    return items;
+  }
+  let html = "", lastCat = null;
+  for (const p of items) {
+    if (p.cat !== lastCat) {
+      html += `<div class="p-group">${esc(p.catLabel)}</div>`;
+      lastCat = p.cat;
+    }
+    const hint = p.levels
+      ? `<span class="p-hint">intern &rarr; senior</span>` : "";
+    html += `<div class="p-item" role="option" data-id="${esc(p.id)}">${esc(p.label)}${hint}</div>`;
+  }
+  panel.innerHTML = html;
+  return items;
+}
+function openPanel() { renderPanel(pickerInput.value); panel.style.display = "block"; }
+function closePanel() { panel.style.display = "none"; }
+const LEVEL_ORDER_UI = ["intern", "junior", "mid", "senior"];
+const LEVEL_LABELS = { intern: "Intern", junior: "Junior", mid: "Mid-level", senior: "Senior" };
+let currentPreset = null;
+
+function choosePreset(id, level) {
+  const p = PRESET_LIST.find((x) => x.id === id);
+  if (!p) return;
+  currentPreset = p;
+  const levelRow = $("level-row"), seg = $("level-seg");
+  if (p.levels) {
+    const avail = LEVEL_ORDER_UI.filter((l) => p.levels[l]);
+    if (!level || !p.levels[level])
+      level = avail.includes("junior") ? "junior" : avail[0];
+    seg.innerHTML = avail.map((l) =>
+      `<button type="button" class="${l === level ? "active" : ""}" data-level="${l}">${LEVEL_LABELS[l]}</button>`).join("");
+    levelRow.style.display = "flex";
+    $("jd").value = p.levels[level];
+    pickerInput.value = `${p.catLabel} · ${p.label} — ${LEVEL_LABELS[level]}`;
+  } else {
+    levelRow.style.display = "none";
+    $("jd").value = p.text;
+    pickerInput.value = `${p.catLabel} · ${p.label}`;
+  }
+  closePanel();
+}
+$("level-seg").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-level]");
+  if (b && currentPreset) choosePreset(currentPreset.id, b.dataset.level);
+});
+pickerInput.addEventListener("focus", () => { pickerInput.select(); openPanel(); });
+pickerInput.addEventListener("input", openPanel);
+pickerInput.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closePanel();
+  if (e.key === "Enter") {
+    const first = panel.querySelector(".p-item");
+    if (first) choosePreset(first.dataset.id);
+    e.preventDefault();
+  }
+});
+panel.addEventListener("mousedown", (e) => {
+  const item = e.target.closest(".p-item");
+  if (item) { choosePreset(item.dataset.id); e.preventDefault(); }
+});
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".picker")) closePanel();
 });
 
 $("btn-grade").addEventListener("click", async () => {

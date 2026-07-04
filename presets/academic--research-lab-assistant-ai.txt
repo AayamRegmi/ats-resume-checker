@@ -1,0 +1,18 @@
+Research Assistant - AI/ML Lab
+University Computer Science Department
+
+About the position
+Part-time research assistant supporting graduate research in machine learning.
+
+Requirements
+- Enrolled in or completed a Bachelor's in Computer Science or related field
+- Strong Python; NumPy, Pandas and scikit-learn
+- Machine learning fundamentals (coursework or projects)
+- Ability to read papers and write a literature review
+- Git for collaborative research code
+
+Nice to have
+- PyTorch or TensorFlow experience
+- Research experience or publications
+- LaTeX for paper writing
+- Strong academic record (GPA, dean's list)

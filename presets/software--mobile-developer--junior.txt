@@ -1,0 +1,17 @@
+Junior Mobile Developer
+Pocketworks Studio - Remote
+
+About the role
+Ship and maintain our consumer mobile apps on iOS and Android.
+
+Requirements
+- 0-1 years of professional experience (internships and projects count)
+- Bachelor's degree or equivalent practical experience
+- Swift and iOS development, or Kotlin and Android
+- REST APIs and offline data handling
+- Git and code review workflow
+
+Nice to have
+- React Native or Flutter
+- Push notifications and analytics
+- Performance profiling

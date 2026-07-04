@@ -1,0 +1,18 @@
+QA Engineer Intern
+Verity Labs - Remote
+
+About the role
+Build and maintain the automated test suites that guard our releases.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- Test planning and regression testing
+- Test automation with Selenium, Cypress or Playwright
+- API and integration testing
+- Jira or similar tracking tools
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- JavaScript or Python scripting
+- SQL for data validation

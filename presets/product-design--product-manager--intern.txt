@@ -1,0 +1,17 @@
+Product Management Intern
+Fernwood Software - Hybrid
+
+About the role
+Own the roadmap for our SMB invoicing product from discovery to launch.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- User research and data-driven decision making
+- Agile delivery with engineering teams (Scrum, Jira)
+- Clear written communication and stakeholder management
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- SQL or analytics self-service (Google Analytics, Looker)
+- Technical background or CS degree

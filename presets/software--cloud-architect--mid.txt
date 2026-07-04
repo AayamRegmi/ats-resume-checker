@@ -1,0 +1,20 @@
+Cloud Solutions Architect
+Meridian Cloud Partners - Remote
+
+About the role
+Design secure, cost-effective cloud architectures for enterprise customers.
+
+Requirements
+- 2-4 years of professional experience
+- Deep AWS experience; Azure or GCP a strong second
+- Kubernetes, Docker and serverless architectures
+- Terraform and infrastructure-as-code
+- Networking, IAM and security best practices
+- Architecture documentation and stakeholder communication
+- Cost optimization / FinOps
+- Bachelor's degree in a related field or equivalent experience
+
+Nice to have
+- AWS Certified Solutions Architect
+- Multi-account governance
+- Mentoring engineers

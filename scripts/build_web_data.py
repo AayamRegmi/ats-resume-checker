@@ -30,11 +30,27 @@ def main():
     resumes = {f.stem: f.read_text(encoding="utf-8")
                for f in sorted(SAMPLES.glob("*resume*.txt"))}
 
-    presets: dict = {}
+    # <cat>--<slug>.txt is a single posting; <cat>--<slug>--<level>.txt variants
+    # are grouped under one picker entry with a "levels" dict.
+    LEVELS = ["intern", "junior", "mid", "senior"]
+    roles: dict = {}
+    n_files = 0
     for f in sorted(PRESETS.glob("*--*.txt")):
-        category, slug = f.stem.split("--", 1)
-        presets.setdefault(category, []).append(
-            {"id": f.stem, "label": pretty(slug), "text": f.read_text(encoding="utf-8")})
+        n_files += 1
+        parts = f.stem.split("--")
+        cat, slug = parts[0], parts[1]
+        level = parts[2] if len(parts) > 2 else None
+        item = roles.setdefault((cat, slug), {"id": f"{cat}--{slug}", "label": pretty(slug)})
+        text = f.read_text(encoding="utf-8")
+        if level:
+            item.setdefault("levels", {})[level] = text
+        else:
+            item["text"] = text
+    presets: dict = {}
+    for (cat, _slug), item in roles.items():
+        if "levels" in item:
+            item["levels"] = {lv: item["levels"][lv] for lv in LEVELS if lv in item["levels"]}
+        presets.setdefault(cat, []).append(item)
     for items in presets.values():
         items.sort(key=lambda x: x["label"])
 
@@ -48,7 +64,8 @@ def main():
         "if (typeof module !== 'undefined') module.exports = { CVG_DATA, CVG_SAMPLES, CVG_PRESETS };\n",
         encoding="utf-8")
     n = sum(len(v) for v in presets.values())
-    print(f"wrote {OUT} ({n} presets in {len(presets)} categories)")
+    print(f"wrote {OUT} ({n_files} posting files -> {n} picker entries "
+          f"in {len(presets)} categories)")
 
 
 if __name__ == "__main__":

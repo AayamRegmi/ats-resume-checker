@@ -1,0 +1,18 @@
+DevOps Engineer Intern
+Skyloft Systems - Remote
+
+About the role
+Own the reliability, automation and deployment pipeline of our cloud platform.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- Linux administration and shell scripting
+- AWS fundamentals (EC2, S3, RDS)
+- Docker
+- CI/CD pipelines (GitHub Actions, GitLab CI or Jenkins)
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- Python or Go for tooling
+- Ansible

@@ -1,0 +1,20 @@
+Senior Mobile Developer
+Pocketworks Studio - Remote
+
+About the role
+Ship and maintain our consumer mobile apps on iOS and Android.
+
+Requirements
+- 5+ years of professional experience
+- Swift and iOS development, or Kotlin and Android
+- REST APIs and offline data handling
+- Git and code review workflow
+- App Store / Play Store release ownership
+- CI/CD for mobile builds
+- Unit testing and UI test automation
+
+Nice to have
+- React Native or Flutter
+- Push notifications and analytics
+- Performance profiling
+- Mentoring and technical/team leadership

@@ -53,11 +53,16 @@
   a { color: var(--accent); }
 
   #theme-toggle {
-    flex: none; width: 40px; height: 40px; border-radius: 50%;
+    flex: none; width: 40px; height: 40px; border-radius: 50%; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
     border: 1px solid var(--grid); background: var(--surface); color: var(--ink);
-    font-size: 17px; cursor: pointer; line-height: 1; box-shadow: var(--shadow);
+    cursor: pointer; box-shadow: var(--shadow);
   }
   #theme-toggle:hover { border-color: var(--muted); }
+  #theme-toggle svg { width: 18px; height: 18px; display: block; }
+  #theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] #theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] #theme-toggle .icon-moon { display: none; }
 
   .card {
     background: var(--surface); border: 1px solid var(--border);
@@ -91,6 +96,38 @@
   }
   textarea { min-height: 380px; resize: vertical; flex: 1; }
   .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+
+  .picker { position: relative; flex: 1; min-width: 240px; }
+  .picker input {
+    width: 100%; background: var(--page); color: var(--ink);
+    border: 1px solid var(--grid); border-radius: 9px; padding: 9px 11px;
+    font: inherit; font-size: 13.5px;
+  }
+  .picker-panel {
+    position: absolute; z-index: 30; top: calc(100% + 5px); left: 0; right: 0;
+    max-height: 330px; overflow-y: auto; background: var(--surface);
+    border: 1px solid var(--grid); border-radius: 11px; display: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  }
+  .p-group {
+    font-size: 11px; letter-spacing: .7px; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; padding: 9px 13px 3px;
+    position: sticky; top: 0; background: var(--surface);
+  }
+  .p-item { padding: 7px 13px; cursor: pointer; font-size: 13.5px; }
+  .p-item:hover, .p-item.active { background: var(--page); }
+  .p-item .p-hint { color: var(--muted); font-size: 12px; margin-left: 6px; }
+  .p-empty { padding: 12px 13px; color: var(--muted); font-size: 13.5px; }
+
+  .seg { display: inline-flex; border: 1px solid var(--grid); border-radius: 9px; overflow: hidden; }
+  .seg button {
+    border: none; border-radius: 0; padding: 7px 15px; font-size: 13px;
+    background: var(--surface); color: var(--ink-2);
+  }
+  .seg button + button { border-left: 1px solid var(--grid); }
+  .seg button.active {
+    background: var(--accent); color: var(--accent-ink); font-weight: 600;
+  }
   button {
     font: inherit; border-radius: 9px; cursor: pointer; padding: 9px 18px;
     border: 1px solid var(--grid); background: var(--surface); color: var(--ink);
@@ -198,7 +235,10 @@
       <p class="sub">Grade your resume the way real ATS parsers, recruiter keyword searches and screening heuristics do.</p>
       <p class="privacy">Runs 100% in your browser &mdash; your CV is never uploaded anywhere. No LLM, no server, no tracking.</p>
     </div>
-    <button id="theme-toggle" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">🌙</button>
+    <button id="theme-toggle" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
   </header>
 
   <div class="card">
@@ -221,10 +261,17 @@
         <label for="jd">Job description &mdash; paste the posting's text (strongly recommended)</label>
         <textarea id="jd" placeholder="Paste the job posting here to enable keyword-match scoring - this is what real screens key on.&#10;&#10;Without it, only parsing and content quality are graded.&#10;&#10;Or pick one of the sample job postings below."></textarea>
         <div class="row" style="align-items:center">
-          <label for="jd-preset" style="margin:0;white-space:nowrap">Sample job:</label>
-          <select id="jd-preset" style="flex:1;min-width:220px">
-            <option value="">Pick from 38 roles across the job market&hellip;</option>
-          </select>
+          <label for="jd-search" style="margin:0;white-space:nowrap">Sample posting:</label>
+          <div class="picker">
+            <input id="jd-search" type="text" autocomplete="off" spellcheck="false"
+                   placeholder="Search jobs, degrees & scholarships&hellip;"
+                   aria-label="Search sample postings">
+            <div class="picker-panel" id="jd-panel" role="listbox"></div>
+          </div>
+        </div>
+        <div class="row" id="level-row" style="display:none">
+          <label style="margin:0;white-space:nowrap">Seniority level:</label>
+          <div class="seg" id="level-seg"></div>
         </div>
       </div>
     </div>

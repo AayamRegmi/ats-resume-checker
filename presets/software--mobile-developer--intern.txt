@@ -1,0 +1,17 @@
+Mobile Developer Intern
+Pocketworks Studio - Remote
+
+About the role
+Ship and maintain our consumer mobile apps on iOS and Android.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- Swift and iOS development, or Kotlin and Android
+- REST APIs and offline data handling
+- Git and code review workflow
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- React Native or Flutter
+- Push notifications and analytics

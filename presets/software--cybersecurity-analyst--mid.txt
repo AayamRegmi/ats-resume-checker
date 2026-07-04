@@ -1,0 +1,19 @@
+Cybersecurity Analyst
+Sentinel Ridge Security - Hybrid
+
+About the role
+Monitor, detect and respond to threats across our clients' environments.
+
+Requirements
+- 2-4 years of professional experience
+- Network security fundamentals: firewalls, VPN, DNS, TCP/IP
+- Vulnerability management basics
+- Security monitoring and log analysis
+- SIEM operation (Splunk or similar) and incident response
+- IAM, OAuth and SSO
+- Bachelor's degree in a related field or equivalent experience
+
+Nice to have
+- Security+ or CISSP progress
+- Python or PowerShell scripting
+- Cloud security (AWS or Azure)

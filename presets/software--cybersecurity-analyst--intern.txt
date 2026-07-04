@@ -1,0 +1,17 @@
+Cybersecurity Analyst Intern
+Sentinel Ridge Security - Hybrid
+
+About the role
+Monitor, detect and respond to threats across our clients' environments.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- Network security fundamentals: firewalls, VPN, DNS, TCP/IP
+- Vulnerability management basics
+- Security monitoring and log analysis
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- Security+ or CISSP progress
+- Python or PowerShell scripting

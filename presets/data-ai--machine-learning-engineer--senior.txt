@@ -1,0 +1,20 @@
+Senior Machine Learning Engineer
+Arclight AI - Remote
+
+About the role
+Take models from notebook to production and keep them healthy at scale.
+
+Requirements
+- 5+ years of professional experience
+- Strong Python and software engineering fundamentals
+- Machine learning fundamentals (scikit-learn, Pandas, NumPy)
+- SQL
+- PyTorch or TensorFlow in production
+- Model deployment: Docker, Kubernetes, REST APIs
+- Data pipelines and feature engineering
+
+Nice to have
+- LLMs, RAG or generative AI systems
+- MLOps and CI/CD for models
+- Spark or distributed training
+- Mentoring and technical/team leadership

@@ -1,0 +1,18 @@
+Full-Stack Developer Intern
+Everest Digital - Kathmandu, Nepal (Hybrid)
+
+About the role
+Own features end to end - database to UI - for client web applications.
+
+Requirements
+- Currently enrolled in a Bachelor's degree in a related field
+- JavaScript and a modern framework (React, Vue or Angular)
+- Backend with Node.js, Django or Spring
+- SQL and relational database design (MySQL or PostgreSQL)
+- REST API design and integration
+- Coursework and personal projects count as experience
+
+Nice to have
+- Prior internship or part-time experience
+- GraphQL
+- UI/UX sensibility and Figma

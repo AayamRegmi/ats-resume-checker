@@ -1,0 +1,18 @@
+Summer Research Internship (REU-style)
+University Research Programme - 10 weeks, funded
+
+About the programme
+Paid summer research placement for undergraduates in STEM labs.
+
+Requirements
+- Enrolled undergraduate in a STEM field
+- Strong academic record (GPA 3.0+)
+- Coursework foundation relevant to the host lab
+- Basic data analysis (Python, R, MATLAB or Excel)
+- Motivation for research and graduate study
+
+Nice to have
+- Prior research experience or lab coursework
+- Poster or oral presentation experience
+- Programming projects on GitHub
+- Statistics coursework

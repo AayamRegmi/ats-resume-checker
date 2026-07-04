@@ -1,0 +1,18 @@
+Junior Frontend Developer
+Brightlane Apps - Remote
+
+About the role
+Build polished, accessible user interfaces for our B2B web products.
+
+Requirements
+- 0-1 years of professional experience (internships and projects count)
+- Bachelor's degree or equivalent practical experience
+- Strong JavaScript and TypeScript
+- React and modern state management (Redux or similar)
+- HTML, CSS and responsive layout
+- Consuming REST APIs or GraphQL
+
+Nice to have
+- Figma and design systems
+- Node.js
+- CI/CD familiarity

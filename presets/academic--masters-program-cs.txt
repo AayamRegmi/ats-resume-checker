@@ -1,0 +1,19 @@
+M.S. in Computer Science - Admission
+Graduate School of Engineering
+
+About the programme
+Two-year thesis-track master's. Admissions reviews CV, transcripts and statement.
+
+Requirements
+- Bachelor's degree in Computer Science or closely related field
+- Strong academic record (GPA 3.0+/4.0 or equivalent)
+- Programming proficiency (Python, Java or C++)
+- Core CS coursework: algorithms, data structures, databases (SQL)
+- English proficiency for international applicants (TOEFL/IELTS)
+
+Nice to have
+- GRE scores
+- Research experience or publications
+- Personal projects on GitHub
+- Relevant internships
+- Extracurricular or hackathon participation

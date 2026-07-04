@@ -1,0 +1,21 @@
+Senior Data Analyst
+Corven Retail Group - Hybrid
+
+About the role
+Turn messy operational data into dashboards and decisions.
+
+Requirements
+- 5+ years of professional experience
+- Strong SQL for querying relational databases
+- Excel including pivot tables and VLOOKUP
+- Dashboards with Tableau, Power BI or Looker
+- Statistics fundamentals
+- Python (Pandas) for analysis
+- A/B testing and experimentation
+- Stakeholder reporting and data storytelling
+
+Nice to have
+- Google Analytics
+- dbt or data modeling exposure
+- Retail or e-commerce domain experience
+- Mentoring and technical/team leadership

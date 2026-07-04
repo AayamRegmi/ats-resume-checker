@@ -1,0 +1,20 @@
+Data Scientist
+Halcyon Health Tech - Remote
+
+About the role
+Build models that predict patient outcomes and power product features.
+
+Requirements
+- 2-4 years of professional experience
+- Python: Pandas, NumPy, scikit-learn
+- Statistics and hypothesis testing
+- SQL and working with production data
+- Communicating findings to non-technical stakeholders
+- A/B testing and experiment design at scale
+- Deep learning with PyTorch or TensorFlow
+- Bachelor's degree in a related field or equivalent experience
+
+Nice to have
+- Spark or distributed processing
+- LLMs or generative AI exposure
+- Master's degree in a quantitative field

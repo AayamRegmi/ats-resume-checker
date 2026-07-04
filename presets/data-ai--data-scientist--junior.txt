@@ -1,0 +1,18 @@
+Junior Data Scientist
+Halcyon Health Tech - Remote
+
+About the role
+Build models that predict patient outcomes and power product features.
+
+Requirements
+- 0-1 years of professional experience (internships and projects count)
+- Bachelor's degree or equivalent practical experience
+- Python: Pandas, NumPy, scikit-learn
+- Statistics and hypothesis testing
+- SQL and working with production data
+- Communicating findings to non-technical stakeholders
+
+Nice to have
+- Spark or distributed processing
+- LLMs or generative AI exposure
+- Master's degree in a quantitative field

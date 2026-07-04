@@ -1,0 +1,20 @@
+Senior QA Engineer
+Verity Labs - Remote
+
+About the role
+Build and maintain the automated test suites that guard our releases.
+
+Requirements
+- 5+ years of professional experience
+- Test planning and regression testing
+- Test automation with Selenium, Cypress or Playwright
+- API and integration testing
+- Jira or similar tracking tools
+- Test suites integrated into CI/CD pipelines
+- Performance or load testing
+
+Nice to have
+- JavaScript or Python scripting
+- SQL for data validation
+- Mobile app testing
+- Mentoring and technical/team leadership

@@ -1,0 +1,17 @@
+Associate Product Manager
+Fernwood Software - Hybrid
+
+About the role
+Own the roadmap for our SMB invoicing product from discovery to launch.
+
+Requirements
+- 0-1 years of professional experience (internships and projects count)
+- Bachelor's degree or equivalent practical experience
+- User research and data-driven decision making
+- Agile delivery with engineering teams (Scrum, Jira)
+- Clear written communication and stakeholder management
+
+Nice to have
+- SQL or analytics self-service (Google Analytics, Looker)
+- Technical background or CS degree
+- B2B SaaS experience

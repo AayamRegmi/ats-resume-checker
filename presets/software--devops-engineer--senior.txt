@@ -1,0 +1,21 @@
+Senior DevOps Engineer
+Skyloft Systems - Remote
+
+About the role
+Own the reliability, automation and deployment pipeline of our cloud platform.
+
+Requirements
+- 5+ years of professional experience
+- Linux administration and shell scripting
+- AWS fundamentals (EC2, S3, RDS)
+- Docker
+- CI/CD pipelines (GitHub Actions, GitLab CI or Jenkins)
+- Kubernetes in production
+- Terraform / infrastructure-as-code at scale
+- Monitoring and observability (Prometheus, Grafana or Datadog)
+
+Nice to have
+- Python or Go for tooling
+- Ansible
+- IAM and security best practices
+- Mentoring and technical/team leadership
