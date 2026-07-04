@@ -1,0 +1,18 @@
+Technical Writer
+Quillstone Docs - Remote
+
+About the role
+Own developer-facing documentation for our API platform.
+
+Requirements
+- 2+ years of technical writing experience
+- Documenting REST APIs and developer tools
+- Ability to read code samples (Python or JavaScript)
+- Git-based docs-as-code workflow
+- Strong editing and information architecture skills
+
+Nice to have
+- Markdown static-site generators
+- OpenAPI / Swagger specs
+- Developer background
+- Content strategy experience

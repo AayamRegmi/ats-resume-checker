@@ -1,0 +1,19 @@
+Product Manager
+Fernwood Software - Hybrid
+
+About the role
+Own the roadmap for our SMB invoicing product from discovery to launch.
+
+Requirements
+- 3+ years in product management
+- Roadmap ownership and product strategy
+- User research and data-driven decision making
+- Agile delivery with engineering teams (Scrum, Jira)
+- Stakeholder management across sales, support and engineering
+- Defining and tracking OKRs / KPIs
+
+Nice to have
+- SQL or analytics self-service (Google Analytics, Looker)
+- Technical background or CS degree
+- B2B SaaS experience
+- Pricing and packaging exposure

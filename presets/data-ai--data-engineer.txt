@@ -1,0 +1,19 @@
+Data Engineer
+Northbeam Logistics - Hybrid
+
+About the role
+Build and operate the pipelines that feed our analytics and ML platforms.
+
+Requirements
+- 2+ years building data pipelines in production
+- Strong SQL and Python
+- ETL/ELT design and data warehousing concepts
+- Airflow or similar orchestration
+- Spark or other large-scale processing
+- Snowflake, BigQuery or Redshift experience
+
+Nice to have
+- dbt
+- Kafka or event streaming
+- Docker, Kubernetes and CI/CD
+- Data quality and observability tooling

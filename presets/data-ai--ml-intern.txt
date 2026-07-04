@@ -1,0 +1,21 @@
+Machine Learning Intern
+Kritim AI Labs - Kathmandu / Remote
+
+About the role
+Join our applied ML team for a 6-month internship building and evaluating
+models for document understanding and NLP products.
+
+Requirements
+- Pursuing or recently completed a Bachelor's degree in Computer Science,
+  Mathematics or a related field
+- Strong Python skills
+- Hands-on machine learning fundamentals (coursework, research or projects)
+- Experience with NumPy, Pandas and scikit-learn
+- Familiarity with PyTorch or TensorFlow
+- Understanding of statistics and model evaluation
+
+Nice to have
+- NLP or computer vision project experience
+- Published research or a public portfolio (GitHub, Kaggle)
+- SQL
+- Exposure to LLMs or generative AI

@@ -1,0 +1,19 @@
+Machine Learning Engineer
+Arclight AI - Remote
+
+About the role
+Take models from notebook to production and keep them healthy at scale.
+
+Requirements
+- 3+ years in ML engineering or backend engineering with ML exposure
+- Strong Python and software engineering fundamentals
+- PyTorch or TensorFlow in production
+- Model deployment: Docker, Kubernetes, REST APIs
+- Data pipelines and feature engineering
+- SQL and cloud experience (AWS or GCP)
+
+Nice to have
+- LLMs, RAG or generative AI systems
+- MLOps tooling and CI/CD for models
+- Spark or distributed training
+- NLP or computer vision background

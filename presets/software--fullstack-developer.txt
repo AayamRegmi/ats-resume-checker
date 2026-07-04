@@ -1,0 +1,19 @@
+Full-Stack Web Developer
+Everest Digital - Kathmandu, Nepal (Hybrid)
+
+About the role
+Own features end to end - database to UI - for client web applications.
+
+Requirements
+- 1+ years of experience building web applications (internships and freelance count)
+- JavaScript and at least one modern framework (React, Vue or Angular)
+- Backend experience with Node.js, Django, Laravel or Spring
+- SQL and relational database design (MySQL or PostgreSQL)
+- REST API design and integration
+- Git-based workflow
+
+Nice to have
+- TypeScript
+- Docker and basic CI/CD
+- Experience deploying to AWS or a similar cloud
+- UI/UX sensibility and familiarity with Figma

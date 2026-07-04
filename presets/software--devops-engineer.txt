@@ -1,0 +1,20 @@
+DevOps Engineer
+Skyloft Systems - Remote
+
+About the role
+Own the reliability, automation and deployment pipeline of our cloud platform.
+
+Requirements
+- 3+ years in DevOps, SRE or platform engineering
+- Strong AWS experience (EC2, S3, Lambda, RDS)
+- Docker and Kubernetes in production
+- Terraform or other infrastructure-as-code
+- CI/CD pipelines (GitHub Actions, GitLab CI or Jenkins)
+- Linux administration and shell scripting
+- Monitoring and observability (Prometheus, Grafana or Datadog)
+
+Nice to have
+- Python or Go for tooling
+- Ansible configuration management
+- Cost optimization experience
+- Security and IAM best practices

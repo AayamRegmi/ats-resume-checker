@@ -7,7 +7,7 @@ Grade your resume the way real hiring pipelines actually do — **before** you a
 | Stage | What real systems do | What this tool checks |
 |---|---|---|
 | **1. Parse** | Nearly every ATS (Workday, Greenhouse, iCIMS, Taleo, Lever…) runs your file through one of the same few parsing engines (Textkernel, Sovren, Daxtra). If parsing fails, you're a blank candidate. | Text layer, tables, multi-column layouts, images, text boxes, header/footer traps, contact extraction, standard sections, parseable dates |
-| **2. Keyword search** | Recruiters search/filter candidates by the job description's exact terms; tools like Jobscan score the same match rate. | Required vs nice-to-have skill match (155+ skill alias groups), job-title alignment, years of experience, degree requirement, keyword-stuffing detection |
+| **2. Keyword search** | Recruiters search/filter candidates by the job description's exact terms; tools like Jobscan score the same match rate. | Required vs nice-to-have skill match (200+ skill alias groups covering tech, data, design, marketing, sales, finance, HR/ops, healthcare and education), job-title alignment, years of experience, degree requirement, keyword-stuffing detection |
 | **3. Human skim** | A recruiter gives the survivors ~7 seconds each. | Quantified achievements, action verbs, weak/passive phrasing, buzzwords, pronouns, length, gaps, tenure, date consistency |
 
 You get **per-category scores, an overall 0–100 score with a letter grade, color-coded findings (green → yellow → orange → red), knockout-risk flags, and fixes ranked by score impact.**
@@ -16,7 +16,7 @@ No LLM, no server, no tracking — it's deterministic parsing + lexicon matching
 
 ## Web version (no install)
 
-**https://aayamregmi.github.io/cv-grader/** — the same engine ported to JavaScript, running entirely in your browser. Your CV is never uploaded anywhere: PDF parsing (pdf.js), DOCX parsing (JSZip) and all scoring happen locally. Drag in a resume, paste a job posting, get the full color-coded report.
+**https://aayamregmi.github.io/cv-grader/** — the same engine ported to JavaScript, running entirely in your browser. Your CV is never uploaded anywhere: PDF parsing (pdf.js), DOCX parsing (JSZip) and all scoring happen locally. Drag in a resume, paste a job posting (or pick from **38 built-in sample postings across 8 job-market categories** in `presets/`), and get the full color-coded report. Light/dark theme toggle included.
 
 The web app lives in `docs/` and is served by GitHub Pages. The two implementations share the same lexicons (`cvgrader/data/*.json`); after editing them, run `python scripts/build_web_data.py` to regenerate `docs/data.js`. One known fidelity gap: for PDFs, the CLI detects ruled tables via pdfplumber while the web version uses a text-gap heuristic and can miss thin-ruled tables — the Python CLI is the reference implementation.
 

@@ -9,6 +9,23 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"']/g,
   (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+/* theme toggle: manual choice wins over system preference, persisted locally */
+const THEME_KEY = "cvg-theme";
+const themeBtn = document.getElementById("theme-toggle");
+function effectiveTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved) return saved;
+  return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+function applyTheme(t, persist) {
+  document.documentElement.setAttribute("data-theme", t);
+  themeBtn.textContent = t === "dark" ? "☀️" : "🌙";
+  if (persist) localStorage.setItem(THEME_KEY, t);
+}
+applyTheme(effectiveTheme(), false);
+themeBtn.addEventListener("click", () =>
+  applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark", true));
+
 const TIER_ICON = { green: "✓", yellow: "!", orange: "▲", red: "✕" };
 const TIER_LABEL = { green: "PASS", yellow: "WARN", orange: "POOR", red: "FAIL" };
 const TIER_VAR = { green: "--good", yellow: "--warn", orange: "--serious", red: "--critical" };
@@ -49,15 +66,32 @@ function setSample(key) {
 $("btn-strong").addEventListener("click", () => setSample("strong_resume"));
 $("btn-weak").addEventListener("click", () => setSample("weak_resume"));
 
-const jdSelect = $("jd-sample");
-for (const key of Object.keys(CVG_SAMPLES.jds)) {
-  const opt = document.createElement("option");
-  opt.value = key;
-  opt.textContent = key.replace(/^jd_|^sample_/, "").replace(/_/g, " ");
-  jdSelect.appendChild(opt);
+const CATEGORY_ORDER = ["software", "data-ai", "product-design", "marketing",
+                        "sales-support", "finance", "hr-operations", "health-education"];
+const CATEGORY_LABELS = {
+  "software": "Software & IT", "data-ai": "Data & AI",
+  "product-design": "Product & Design", "marketing": "Marketing & Content",
+  "sales-support": "Sales & Customer Success", "finance": "Finance & Accounting",
+  "hr-operations": "HR, Operations & Admin", "health-education": "Healthcare & Education",
+};
+const jdSelect = $("jd-preset");
+const presetById = {};
+const cats = CATEGORY_ORDER.filter((c) => CVG_PRESETS[c])
+  .concat(Object.keys(CVG_PRESETS).filter((c) => !CATEGORY_ORDER.includes(c)));
+for (const cat of cats) {
+  const og = document.createElement("optgroup");
+  og.label = CATEGORY_LABELS[cat] || cat;
+  for (const p of CVG_PRESETS[cat]) {
+    presetById[p.id] = p;
+    const opt = document.createElement("option");
+    opt.value = p.id;
+    opt.textContent = p.label;
+    og.appendChild(opt);
+  }
+  jdSelect.appendChild(og);
 }
 jdSelect.addEventListener("change", () => {
-  if (jdSelect.value) $("jd").value = CVG_SAMPLES.jds[jdSelect.value];
+  if (jdSelect.value) $("jd").value = presetById[jdSelect.value].text;
 });
 
 $("btn-grade").addEventListener("click", async () => {

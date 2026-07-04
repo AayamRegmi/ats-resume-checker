@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CV Grader - free in-browser ATS resume check</title>
 <meta name="description" content="Grade your resume the way real ATS parsers and recruiter keyword searches do. 100% in your browser - your CV is never uploaded.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
 <style>
   :root {
     --page: #f9f9f7; --surface: #fcfcfb;
@@ -14,15 +15,26 @@
     --good: #0ca30c; --warn: #fab219; --serious: #ec835a; --critical: #d03b3b;
     --good-bg: rgba(12,163,12,.10); --warn-bg: rgba(250,178,25,.14);
     --serious-bg: rgba(236,131,90,.14); --critical-bg: rgba(208,59,59,.10);
+    --shadow: 0 1px 2px rgba(11,11,11,.05);
+  }
+  :root[data-theme="dark"] {
+    --page: #0d0d0d; --surface: #1a1a19;
+    --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --border: rgba(255,255,255,.10);
+    --accent: #3987e5;
+    --good-bg: rgba(12,163,12,.16); --warn-bg: rgba(250,178,25,.14);
+    --serious-bg: rgba(236,131,90,.14); --critical-bg: rgba(208,59,59,.18);
+    --shadow: none;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --page: #0d0d0d; --surface: #1a1a19;
       --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
       --grid: #2c2c2a; --border: rgba(255,255,255,.10);
       --accent: #3987e5;
       --good-bg: rgba(12,163,12,.16); --warn-bg: rgba(250,178,25,.14);
       --serious-bg: rgba(236,131,90,.14); --critical-bg: rgba(208,59,59,.18);
+      --shadow: none;
     }
   }
   * { box-sizing: border-box; }
@@ -30,68 +42,89 @@
     margin: 0; background: var(--page); color: var(--ink);
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     line-height: 1.5; font-size: 15px;
+    transition: background .2s, color .2s;
   }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
-  header h1 { margin: 0 0 2px; font-size: 26px; }
-  header p { margin: 0; color: var(--ink-2); }
-  header .privacy { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 28px 20px 80px; }
+
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  header h1 { margin: 0 0 2px; font-size: 27px; letter-spacing: -.3px; }
+  header .sub { margin: 0; color: var(--ink-2); }
+  header .privacy { color: var(--muted); font-size: 13px; margin: 4px 0 0; }
   a { color: var(--accent); }
+
+  #theme-toggle {
+    flex: none; width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--grid); background: var(--surface); color: var(--ink);
+    font-size: 17px; cursor: pointer; line-height: 1; box-shadow: var(--shadow);
+  }
+  #theme-toggle:hover { border-color: var(--muted); }
 
   .card {
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 18px 20px; margin-top: 18px;
+    border-radius: 14px; padding: 20px 22px; margin-top: 18px;
+    box-shadow: var(--shadow);
   }
-  .inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 720px) { .inputs { grid-template-columns: 1fr; } }
+  .inputs { display: grid; grid-template-columns: 1fr 1.15fr; gap: 20px; }
+  @media (max-width: 760px) { .inputs { grid-template-columns: 1fr; } }
+  .col { display: flex; flex-direction: column; }
 
   .drop {
-    border: 1.5px dashed var(--grid); border-radius: 10px; padding: 26px 16px;
-    text-align: center; cursor: pointer; color: var(--ink-2); min-height: 150px;
-    display: flex; flex-direction: column; justify-content: center; gap: 6px;
+    border: 1.5px dashed var(--grid); border-radius: 12px; padding: 26px 16px;
+    text-align: center; cursor: pointer; color: var(--ink-2); flex: 1;
+    display: flex; flex-direction: column; justify-content: center; gap: 8px;
+    min-height: 210px; transition: border-color .15s, background .15s;
   }
-  .drop.dragover { border-color: var(--accent); color: var(--ink); }
+  .drop:hover, .drop:focus-visible { border-color: var(--accent); }
+  .drop.dragover { border-color: var(--accent); background: var(--page); }
+  .drop .big-ico { font-size: 30px; }
   .drop .file-name { color: var(--ink); font-weight: 600; word-break: break-all; }
   .drop small { color: var(--muted); }
 
-  label { display: block; font-size: 13px; color: var(--ink-2); margin: 0 0 4px; }
+  label { display: block; font-size: 13px; color: var(--ink-2); margin: 0 0 5px; font-weight: 600; }
   textarea, select {
     width: 100%; background: var(--page); color: var(--ink);
-    border: 1px solid var(--grid); border-radius: 8px; padding: 8px 10px;
-    font: inherit; font-size: 13px;
+    border: 1px solid var(--grid); border-radius: 9px; padding: 9px 11px;
+    font: inherit; font-size: 13.5px;
   }
-  textarea { min-height: 118px; resize: vertical; }
+  textarea:focus-visible, select:focus-visible, button:focus-visible, .drop:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 1px;
+  }
+  textarea { min-height: 380px; resize: vertical; flex: 1; }
   .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
   button {
-    font: inherit; border-radius: 8px; cursor: pointer; padding: 9px 18px;
+    font: inherit; border-radius: 9px; cursor: pointer; padding: 9px 18px;
     border: 1px solid var(--grid); background: var(--surface); color: var(--ink);
+    transition: border-color .15s, opacity .15s;
   }
+  button:hover:not(:disabled) { border-color: var(--muted); }
   button.primary {
     background: var(--accent); color: var(--accent-ink);
-    border-color: var(--accent); font-weight: 600;
+    border-color: var(--accent); font-weight: 600; padding: 10px 26px;
   }
+  button.primary:hover:not(:disabled) { opacity: .9; }
   button:disabled { opacity: .45; cursor: not-allowed; }
-  .ghost { font-size: 13px; }
+  .ghost { font-size: 13px; padding: 7px 13px; }
 
   /* results */
   #results { display: none; }
   .hero { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-  .hero .num { font-size: 60px; font-weight: 800; line-height: 1; }
+  .hero .num { font-size: 62px; font-weight: 800; line-height: 1; letter-spacing: -1px; }
   .hero .den { font-size: 20px; color: var(--muted); }
   .hero .note { color: var(--ink-2); }
   .meter { background: var(--grid); border-radius: 4px; height: 8px; overflow: hidden; margin-top: 12px; }
-  .meter > div { height: 100%; border-radius: 4px; min-width: 4px; }
-  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
-  @media (max-width: 720px) { .tiles { grid-template-columns: 1fr; } }
-  .tile { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
-  .tile .t-label { font-size: 13px; color: var(--ink-2); }
-  .tile .t-value { font-size: 24px; font-weight: 700; margin: 2px 0 6px; }
+  .meter > div { height: 100%; border-radius: 4px; min-width: 4px; transition: width .4s; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  @media (max-width: 760px) { .tiles { grid-template-columns: 1fr; } }
+  .tile { border: 1px solid var(--border); border-radius: 12px; padding: 13px 15px; }
+  .tile .t-label { font-size: 13px; color: var(--ink-2); font-weight: 600; }
+  .tile .t-value { font-size: 25px; font-weight: 700; margin: 2px 0 8px; }
   .tile .t-value small { font-size: 13px; font-weight: 400; color: var(--muted); }
-  .tile .t-weight { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .tile .t-weight { font-size: 12px; color: var(--muted); margin-top: 7px; }
   .tile .meter { margin-top: 0; height: 6px; }
 
   .tag {
-    display: inline-flex; align-items: center; gap: 5px; border-radius: 6px;
-    font-size: 11.5px; font-weight: 700; letter-spacing: .4px; padding: 2px 8px;
+    display: inline-flex; align-items: center; gap: 5px; border-radius: 7px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: .4px; padding: 3px 9px;
     white-space: nowrap;
   }
   .tag .ico { font-size: 11px; }
@@ -102,28 +135,28 @@
 
   .knockout {
     border: 1.5px solid var(--critical); background: var(--critical-bg);
-    border-radius: 12px; padding: 14px 18px; margin-top: 18px;
+    border-radius: 14px; padding: 14px 18px; margin-top: 18px;
   }
   .knockout b { color: var(--critical); }
   .knockout ul { margin: 8px 0 0; padding-left: 20px; }
 
   h2 { font-size: 17px; margin: 0 0 10px; }
   .checks { width: 100%; border-collapse: collapse; }
-  .checks td { padding: 8px 8px 8px 0; border-top: 1px solid var(--grid); vertical-align: top; }
+  .checks td { padding: 9px 8px 9px 0; border-top: 1px solid var(--grid); vertical-align: top; }
   .checks tr:first-child td { border-top: none; }
   .checks .c-label { font-weight: 600; width: 230px; }
-  .checks .c-tag { width: 86px; }
+  .checks .c-tag { width: 90px; }
   .checks .c-detail { color: var(--ink-2); }
   .checks .c-fix { color: var(--muted); font-size: 13px; margin-top: 3px; }
   .cat-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
   .cat-head .meter { flex: 1; margin-top: 0; height: 6px; }
   .cat-head .sc { font-weight: 700; }
-  .cat-head .wt { color: var(--muted); font-size: 12px; }
+  .cat-head .wt { color: var(--muted); font-size: 12px; white-space: nowrap; }
 
   ol.recs { margin: 0; padding-left: 22px; }
   ol.recs li { margin: 10px 0; }
   .impact {
-    font-weight: 700; font-size: 12px; border-radius: 6px; padding: 1px 7px;
+    font-weight: 700; font-size: 12px; border-radius: 7px; padding: 2px 8px;
     margin-right: 6px; white-space: nowrap;
   }
   ol.recs .fix { color: var(--ink-2); }
@@ -140,36 +173,43 @@
   .chip-crit .ico { color: var(--critical); }
   .chip-serious { background: var(--serious-bg); border-color: var(--serious); }
   .chip-serious .ico { color: var(--serious); }
-  .kw-group { margin: 8px 0; }
-  .kw-group .g-label { font-size: 13px; color: var(--ink-2); margin-bottom: 2px; }
+  .kw-group { margin: 10px 0; }
+  .kw-group .g-label { font-size: 13px; color: var(--ink-2); margin-bottom: 3px; font-weight: 600; }
 
-  .profile dl { display: grid; grid-template-columns: 160px 1fr; gap: 4px 12px; margin: 0; }
+  .profile dl { display: grid; grid-template-columns: 170px 1fr; gap: 6px 12px; margin: 0; }
   .profile dt { color: var(--muted); font-size: 13px; }
   .profile dd { margin: 0; word-break: break-word; }
   .error-banner {
     border: 1.5px solid var(--critical); background: var(--critical-bg);
-    border-radius: 12px; padding: 14px 18px; margin-top: 18px; display: none;
+    border-radius: 14px; padding: 14px 18px; margin-top: 18px; display: none;
   }
-  footer { margin-top: 36px; color: var(--muted); font-size: 13px; }
+  footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
+  footer .links { margin-top: 8px; display: flex; gap: 14px; flex-wrap: wrap; }
+  footer .links a { font-weight: 600; text-decoration: none; }
+  footer .links a:hover { text-decoration: underline; }
   .spinner { display: none; color: var(--ink-2); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>CV Grader</h1>
-    <p>Grade your resume the way real ATS parsers, recruiter keyword searches and screening heuristics do.</p>
-    <p class="privacy">Runs 100% in your browser &mdash; your CV is never uploaded anywhere.</p>
+    <div>
+      <h1>📋 CV Grader</h1>
+      <p class="sub">Grade your resume the way real ATS parsers, recruiter keyword searches and screening heuristics do.</p>
+      <p class="privacy">Runs 100% in your browser &mdash; your CV is never uploaded anywhere. No LLM, no server, no tracking.</p>
+    </div>
+    <button id="theme-toggle" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">🌙</button>
   </header>
 
   <div class="card">
     <div class="inputs">
-      <div>
+      <div class="col">
         <label>Resume file (.pdf, .docx, .txt)</label>
         <div class="drop" id="drop" tabindex="0" role="button" aria-label="Choose or drop a resume file">
+          <div class="big-ico">📄</div>
           <div id="drop-msg">Drop your resume here or <u>click to browse</u></div>
           <div class="file-name" id="file-name"></div>
-          <small>PDF, DOCX or TXT &mdash; test the exact file you would upload to applications</small>
+          <small>Test the exact file you would upload to applications &mdash; formatting hazards only show up in the real file</small>
         </div>
         <input type="file" id="file-input" accept=".pdf,.docx,.txt,.md" hidden>
         <div class="row">
@@ -177,13 +217,13 @@
           <button class="ghost" id="btn-weak">Load sample: weak CV</button>
         </div>
       </div>
-      <div>
-        <label for="jd">Job description (paste the posting's text &mdash; strongly recommended)</label>
-        <textarea id="jd" placeholder="Paste the job posting here to enable keyword-match scoring. Without it, only parsing and content quality are graded."></textarea>
-        <div class="row">
-          <label for="jd-sample" style="margin:0">Or try a sample job:</label>
-          <select id="jd-sample" style="width:auto">
-            <option value="">(none)</option>
+      <div class="col">
+        <label for="jd">Job description &mdash; paste the posting's text (strongly recommended)</label>
+        <textarea id="jd" placeholder="Paste the job posting here to enable keyword-match scoring - this is what real screens key on.&#10;&#10;Without it, only parsing and content quality are graded.&#10;&#10;Or pick one of the sample job postings below."></textarea>
+        <div class="row" style="align-items:center">
+          <label for="jd-preset" style="margin:0;white-space:nowrap">Sample job:</label>
+          <select id="jd-preset" style="flex:1;min-width:220px">
+            <option value="">Pick from 38 roles across the job market&hellip;</option>
           </select>
         </div>
       </div>
@@ -223,10 +263,14 @@
   </div>
 
   <footer>
-    No LLM, no server, no tracking &mdash; deterministic parsing + lexicon matching, the same way
-    real ATS pipelines work. There is <em>no</em> shared cross-company resume score; what follows
-    you everywhere is your file's parseability, which is exactly what this checks.
-    <a href="https://github.com/AayamRegmi/cv-grader">Source on GitHub</a>.
+    There is <em>no</em> shared cross-company resume score &mdash; what follows you everywhere is your
+    file's parseability, which is exactly what this checks. Deterministic parsing + lexicon matching,
+    the same way real ATS pipelines work.
+    <div class="links">
+      <a href="https://github.com/AayamRegmi/cv-grader">⭐ Source &amp; CLI</a>
+      <a href="https://github.com/AayamRegmi">GitHub</a>
+      <a href="https://www.linkedin.com/in/aayam-regmi-196193283">LinkedIn</a>
+    </div>
   </footer>
 </div>
 

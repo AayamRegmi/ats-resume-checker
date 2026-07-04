@@ -1,0 +1,18 @@
+IT Support Specialist
+Harborview Group - On-site
+
+About the role
+Be the first line of help for employees' hardware, software and account issues.
+
+Requirements
+- 1+ years in IT support or help desk
+- Windows administration and Microsoft 365 / Office 365
+- Ticketing systems (Zendesk, ServiceNow or similar)
+- Networking basics: TCP/IP, DNS, VPN, firewalls
+- Strong customer service and communication skills
+
+Nice to have
+- CompTIA A+ or Network+ certification
+- Basic Linux experience
+- Active Directory and IAM administration
+- Hardware troubleshooting and asset management
