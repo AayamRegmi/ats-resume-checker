@@ -112,7 +112,27 @@ function renderPanel(q) {
   panel.innerHTML = html;
   return items;
 }
-function openPanel() { renderPanel(pickerInput.value); panel.style.display = "block"; }
+function positionPanel() {
+  // Clamp to the viewport so opening never grows the page (no layout shift)
+  // and the list never runs off-screen; flip upward when that side has more room.
+  const rect = pickerInput.getBoundingClientRect();
+  const below = window.innerHeight - rect.bottom - 12;
+  const above = rect.top - 12;
+  if (below < 220 && above > below) {
+    panel.style.top = "auto";
+    panel.style.bottom = "calc(100% + 5px)";
+    panel.style.maxHeight = Math.min(330, above) + "px";
+  } else {
+    panel.style.bottom = "auto";
+    panel.style.top = "calc(100% + 5px)";
+    panel.style.maxHeight = Math.min(330, Math.max(below, 160)) + "px";
+  }
+}
+function openPanel(query) {
+  renderPanel(query);
+  panel.style.display = "block";
+  positionPanel();
+}
 function closePanel() { panel.style.display = "none"; }
 const LEVEL_ORDER_UI = ["intern", "junior", "mid", "senior"];
 const LEVEL_LABELS = { intern: "Intern", junior: "Junior", mid: "Mid-level", senior: "Senior" };
@@ -138,13 +158,16 @@ function choosePreset(id, level) {
     pickerInput.value = `${p.catLabel} · ${p.label}`;
   }
   closePanel();
+  pickerInput.blur();
 }
 $("level-seg").addEventListener("click", (e) => {
   const b = e.target.closest("button[data-level]");
   if (b && currentPreset) choosePreset(currentPreset.id, b.dataset.level);
 });
-pickerInput.addEventListener("focus", () => { pickerInput.select(); openPanel(); });
-pickerInput.addEventListener("input", openPanel);
+// On focus show the FULL list (the field may hold a previous selection's label,
+// which is not a search query); filter only as the user actually types.
+pickerInput.addEventListener("focus", () => { pickerInput.select(); openPanel(""); });
+pickerInput.addEventListener("input", () => openPanel(pickerInput.value));
 pickerInput.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closePanel();
   if (e.key === "Enter") {
