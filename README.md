@@ -12,7 +12,15 @@ Grade your resume the way real hiring pipelines actually do — **before** you a
 
 You get **per-category scores, an overall 0–100 score with a letter grade, color-coded findings (green → yellow → orange → red), knockout-risk flags, and fixes ranked by score impact.**
 
-## Install
+No LLM, no server, no tracking — it's deterministic parsing + lexicon matching + fixed weights, which is also how the core of real ATS pipelines works.
+
+## Web version (no install)
+
+**https://aayamregmi.github.io/cv-grader/** — the same engine ported to JavaScript, running entirely in your browser. Your CV is never uploaded anywhere: PDF parsing (pdf.js), DOCX parsing (JSZip) and all scoring happen locally. Drag in a resume, paste a job posting, get the full color-coded report.
+
+The web app lives in `docs/` and is served by GitHub Pages. The two implementations share the same lexicons (`cvgrader/data/*.json`); after editing them, run `python scripts/build_web_data.py` to regenerate `docs/data.js`. One known fidelity gap: for PDFs, the CLI detects ruled tables via pdfplumber while the web version uses a text-gap heuristic and can miss thin-ruled tables — the Python CLI is the reference implementation.
+
+## Install (CLI)
 
 Requires Python 3.9+.
 
