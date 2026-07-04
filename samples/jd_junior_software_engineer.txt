@@ -1,0 +1,21 @@
+Junior Software Engineer
+Bluepine Technologies - Remote
+
+About the role
+We are hiring a Junior Software Engineer to help build and maintain our web
+platform and internal APIs. You will work closely with senior engineers and
+ship code to production in your first month.
+
+Requirements
+- Bachelor's degree in Computer Science or equivalent practical experience
+- Solid programming fundamentals in Python or Java
+- Understanding of SQL and relational databases (PostgreSQL or MySQL)
+- Familiarity with Git and version control workflows
+- Experience building REST APIs (coursework or personal projects count)
+- Basic knowledge of HTML, CSS and JavaScript
+
+Nice to have
+- Internship or work experience in software development
+- Exposure to Docker or cloud platforms (AWS, Azure or GCP)
+- React or another modern frontend framework
+- Unit testing experience (Pytest, JUnit or similar)
