@@ -1,0 +1,22 @@
+Senior Software Engineer (Backend)
+Nimbus Analytics - Seattle, WA (Hybrid)
+
+About the role
+We are looking for a Senior Software Engineer to design, build and scale the
+backend services behind our analytics platform.
+
+Requirements
+- 5+ years of professional software engineering experience
+- Strong Python and SQL skills
+- Experience designing microservices and REST APIs
+- Hands-on with AWS (Lambda, ECS or EKS)
+- Docker and Kubernetes in production
+- CI/CD pipelines (GitHub Actions, Jenkins or similar)
+- PostgreSQL or a similar relational database
+- Bachelor's degree in Computer Science or a related field
+
+Nice to have
+- Terraform or other infrastructure-as-code tooling
+- Kafka or other event streaming platforms
+- GraphQL
+- Experience mentoring engineers

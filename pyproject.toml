@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cv-grader"
+version = "0.1.0"
+description = "Grade a resume the way real ATS parsers, recruiter keyword searches and screening heuristics do - with per-category scores, color-coded findings and impact-ranked fixes."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Aayam Regmi" }]
+keywords = ["resume", "cv", "ats", "applicant-tracking-system", "job-search", "grader"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "pdfplumber>=0.10",
+    "python-docx>=1.0",
+]
+
+[project.scripts]
+cvgrader = "cvgrader.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/AayamRegmi/cv-grader"
+
+[tool.setuptools.packages.find]
+include = ["cvgrader*"]
+
+[tool.setuptools.package-data]
+cvgrader = ["data/*.json"]

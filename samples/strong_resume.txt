@@ -1,0 +1,39 @@
+JANE COOPER
+Seattle, WA | (206) 555-0142 | jane.cooper@email.com | linkedin.com/in/janecooper | github.com/jcooper
+
+SUMMARY
+Senior software engineer with 7 years of experience building cloud-native backend
+services in Python on AWS. Led microservice migrations, event streaming pipelines
+and cost-optimization efforts for healthcare and logistics platforms.
+
+SKILLS
+Languages: Python, SQL, JavaScript, TypeScript
+Cloud & Infrastructure: AWS (Lambda, ECS, EKS, S3), Docker, Kubernetes, Terraform
+Data: PostgreSQL, Redis, Kafka, Elasticsearch
+Practices: Microservices, REST APIs, GraphQL, CI/CD, Agile, Scrum, TDD
+
+EXPERIENCE
+
+Senior Software Engineer - Nimbus Health, Seattle, WA
+Mar 2022 - Present
+- Led migration of a monolithic Django app to 14 microservices on Kubernetes (EKS), cutting deploy time from 45 min to 6 min
+- Designed an event pipeline on Kafka processing 2.3M messages/day at 99.95% uptime
+- Reduced AWS spend 31% ($210K/yr) by rightsizing ECS services and moving batch jobs to spot instances
+- Mentored 4 junior engineers; introduced an RFC process adopted by 3 teams
+
+Software Engineer - Brightpath Logistics, Portland, OR
+Jun 2019 - Feb 2022
+- Built REST and GraphQL APIs in Python (FastAPI) serving 40K daily active users
+- Automated CI/CD with GitHub Actions and Terraform, increasing release frequency from monthly to twice weekly
+- Improved PostgreSQL query performance 8x on core routing endpoints via partial indexes and query rewrites
+
+Junior Developer - Cascade Web Studio, Portland, OR
+Jul 2017 - May 2019
+- Developed and shipped 12 client web applications using JavaScript, React and Node.js
+- Wrote unit and integration tests (Pytest, Jest), raising coverage from 41% to 87%
+
+EDUCATION
+B.S. Computer Science - University of Washington, 2017
+
+CERTIFICATIONS
+AWS Certified Solutions Architect - Associate (2023)

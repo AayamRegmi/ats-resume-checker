@@ -1,0 +1,24 @@
+{
+  "strong": [
+    "accelerated", "achieved", "acquired", "analyzed", "architected", "authored", "automated",
+    "boosted", "built", "centralized", "championed", "closed", "coached", "conceived",
+    "consolidated", "converted", "coordinated", "created", "cut", "debugged", "decreased",
+    "defined", "delivered", "deployed", "designed", "developed", "diagnosed", "directed",
+    "doubled", "drove", "eliminated", "engineered", "established", "exceeded", "executed",
+    "expanded", "founded", "generated", "grew", "hired", "identified", "implemented",
+    "improved", "increased", "initiated", "integrated", "introduced", "launched", "led",
+    "managed", "mentored", "migrated", "modernized", "negotiated", "onboarded", "optimized",
+    "orchestrated", "overhauled", "oversaw", "owned", "partnered", "pioneered", "presented",
+    "prioritized", "produced", "prototyped", "published", "rearchitected", "recruited",
+    "redesigned", "reduced", "refactored", "resolved", "restructured", "revamped", "saved",
+    "scaled", "secured", "shipped", "simplified", "slashed", "spearheaded", "standardized",
+    "streamlined", "strengthened", "supervised", "surpassed", "tested", "trained",
+    "transformed", "tripled", "validated", "won", "wrote"
+  ],
+  "weak_starts": [
+    "responsible for", "worked on", "worked with", "helped with", "helped to", "helped",
+    "assisted with", "assisted in", "assisted", "duties included", "tasked with",
+    "participated in", "involved in", "was part of", "in charge of", "handled",
+    "was responsible", "took part in"
+  ]
+}
