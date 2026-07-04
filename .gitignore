@@ -8,3 +8,6 @@ venv/
 *.html
 !docs/**/*.html
 report.json
+# personal documents being graded - never publish these
+/*.pdf
+/*.docx
