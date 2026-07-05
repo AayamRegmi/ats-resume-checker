@@ -1,4 +1,4 @@
-/* UI wiring + rendering for the cv-grader web app. */
+/* UI wiring + rendering for the ats-resume-checker web app. */
 "use strict";
 
 if (typeof pdfjsLib !== "undefined")
@@ -271,7 +271,7 @@ function render(r) {
     if (kw.missingPreferred.length)
       html += `<div class="kw-group"><div class="g-label">Missing nice-to-have</div>${chips(kw.missingPreferred, "chip-serious", "✕")}</div>`;
     if (kw.otherJdTermsAbsent.length)
-      html += `<div class="kw-group"><div class="g-label">Also frequent in the JD, absent in your CV</div>${chips(kw.otherJdTermsAbsent, "", "·")}</div>`;
+      html += `<div class="kw-group"><div class="g-label">Also frequent in the JD, absent in your resume</div>${chips(kw.otherJdTermsAbsent, "", "·")}</div>`;
     $("r-keywords").innerHTML = html;
   } else kwCard.style.display = "none";
 

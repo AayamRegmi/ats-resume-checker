@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CV Grader - free in-browser ATS resume check</title>
-<meta name="description" content="Grade your resume the way real ATS parsers and recruiter keyword searches do. 100% in your browser - your CV is never uploaded.">
+<title>ATS Resume Checker - free in-browser resume grader</title>
+<meta name="description" content="Grade your resume the way real ATS parsers and recruiter keyword searches do. 100% in your browser - your resume is never uploaded.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
 <style>
   :root {
@@ -231,9 +231,9 @@
 <div class="wrap">
   <header>
     <div>
-      <h1>📋 CV Grader</h1>
+      <h1>📋 ATS Resume Checker</h1>
       <p class="sub">Grade your resume the way real ATS parsers, recruiter keyword searches and screening heuristics do.</p>
-      <p class="privacy">Runs 100% in your browser &mdash; your CV is never uploaded anywhere. No LLM, no server, no tracking.</p>
+      <p class="privacy">Runs 100% in your browser &mdash; your resume is never uploaded anywhere. No LLM, no server, no tracking.</p>
     </div>
     <button id="theme-toggle" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -253,8 +253,8 @@
         </div>
         <input type="file" id="file-input" accept=".pdf,.docx,.txt,.md" hidden>
         <div class="row">
-          <button class="ghost" id="btn-strong">Load sample: strong CV</button>
-          <button class="ghost" id="btn-weak">Load sample: weak CV</button>
+          <button class="ghost" id="btn-strong">Load sample: strong resume</button>
+          <button class="ghost" id="btn-weak">Load sample: weak resume</button>
         </div>
       </div>
       <div class="col">
@@ -276,7 +276,7 @@
       </div>
     </div>
     <div class="row">
-      <button class="primary" id="btn-grade" disabled>Grade my CV</button>
+      <button class="primary" id="btn-grade" disabled>Grade my resume</button>
       <span class="spinner" id="spinner">Analyzing&hellip;</span>
     </div>
   </div>
@@ -314,7 +314,7 @@
     file's parseability, which is exactly what this checks. Deterministic parsing + lexicon matching,
     the same way real ATS pipelines work.
     <div class="links">
-      <a href="https://github.com/AayamRegmi/cv-grader">⭐ Source &amp; CLI</a>
+      <a href="https://github.com/AayamRegmi/ats-resume-checker">⭐ Source &amp; CLI</a>
       <a href="https://github.com/AayamRegmi">GitHub</a>
       <a href="https://www.linkedin.com/in/aayam-regmi-196193283">LinkedIn</a>
     </div>

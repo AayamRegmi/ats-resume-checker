@@ -1,8 +1,8 @@
-# cv-grader
+# ats-resume-checker
 
 Grade your resume the way real hiring pipelines actually do — **before** you apply.
 
-`cv-grader` simulates the three screens a resume passes through at almost every company:
+`ats-resume-checker` simulates the three screens a resume passes through at almost every company:
 
 | Stage | What real systems do | What this tool checks |
 |---|---|---|
@@ -16,7 +16,7 @@ No LLM, no server, no tracking — it's deterministic parsing + lexicon matching
 
 ## Web version (no install)
 
-**https://aayamregmi.github.io/cv-grader/** — the same engine ported to JavaScript, running entirely in your browser. Your CV is never uploaded anywhere: PDF parsing (pdf.js), DOCX parsing (JSZip) and all scoring happen locally. Drag in a resume, paste a job posting — or search the **97 built-in sample postings** (`presets/`): 47 roles and programmes across 9 categories from software to nursing to Erasmus/Fulbright/DAAD applications, 18 of them with **intern → junior → mid → senior variants** behind a level switch. Light/dark theme toggle included.
+**https://aayamregmi.github.io/ats-resume-checker/** — the same engine ported to JavaScript, running entirely in your browser. Your resume is never uploaded anywhere: PDF parsing (pdf.js), DOCX parsing (JSZip) and all scoring happen locally. Drag in a resume, paste a job posting — or search the **97 built-in sample postings** (`presets/`): 47 roles and programmes across 9 categories from software to nursing to Erasmus/Fulbright/DAAD applications, 18 of them with **intern → junior → mid → senior variants** behind a level switch. Light/dark theme toggle included.
 
 The web app lives in `docs/` and is served by GitHub Pages. The two implementations share the same lexicons (`cvgrader/data/*.json`); after editing them, run `python scripts/build_web_data.py` to regenerate `docs/data.js`. One known fidelity gap: for PDFs, the CLI detects ruled tables via pdfplumber while the web version uses a text-gap heuristic and can miss thin-ruled tables — the Python CLI is the reference implementation.
 
@@ -25,13 +25,13 @@ The web app lives in `docs/` and is served by GitHub Pages. The two implementati
 Requires Python 3.9+.
 
 ```bash
-pip install git+https://github.com/AayamRegmi/cv-grader.git
+pip install git+https://github.com/AayamRegmi/ats-resume-checker.git
 ```
 
 or with [pipx](https://pipx.pypa.io) (isolated, recommended):
 
 ```bash
-pipx install git+https://github.com/AayamRegmi/cv-grader.git
+pipx install git+https://github.com/AayamRegmi/ats-resume-checker.git
 ```
 
 ## Usage

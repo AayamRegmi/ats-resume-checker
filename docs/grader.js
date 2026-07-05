@@ -1,4 +1,4 @@
-/* cv-grader web engine - a faithful JS port of the Python cvgrader package.
+/* ats-resume-checker web engine - a faithful JS port of the Python cvgrader package.
  * Pure heuristics: regex + lexicons + fixed weights. No network calls, no LLM;
  * resumes never leave the browser.
  * Structure mirrors the Python modules: extract / parse / quality / match / score.

@@ -55,7 +55,7 @@ def render_terminal(rep: Report, no_color: bool = False) -> str:
     title = Path(rep.resume_path).name
     vs = f"  vs  {Path(rep.jd_path).name}" if rep.jd_path else ""
     out.append("=" * w)
-    out.append(paint(f"  CV GRADER  |  {title}{vs}", _BOLD))
+    out.append(paint(f"  RESUME CHECKER  |  {title}{vs}", _BOLD))
     out.append("=" * w)
 
     if rep.error:
@@ -210,7 +210,7 @@ def write_html(rep: Report, path: str) -> str:
     skills = "".join(chip(s, "#475569") for s in prof["skills_recognized"]) or "(none)"
 
     html_doc = f"""<!doctype html><html><head><meta charset="utf-8">
-<title>CV Grade: {escape(Path(rep.resume_path).name)}</title>
+<title>Resume Grade: {escape(Path(rep.resume_path).name)}</title>
 <style>
  body{{font-family:Segoe UI,system-ui,sans-serif;max-width:880px;margin:32px auto;
       padding:0 20px;color:#1a1a1a;line-height:1.45}}
@@ -218,7 +218,7 @@ def write_html(rep: Report, path: str) -> str:
  h1{{margin-bottom:4px}} h2{{margin-top:28px}}
  .score{{font-size:56px;font-weight:800;color:{_TIER_HEX[tier]}}}
 </style></head><body>
-<h1>CV Grader report</h1>
+<h1>Resume Checker report</h1>
 <p style="color:#666">{escape(Path(rep.resume_path).name)}
 {("&nbsp;vs&nbsp;" + escape(Path(rep.jd_path).name)) if rep.jd_path else ""}</p>
 <div class="score">{rep.overall:g}<small style="font-size:22px;color:#888">/100

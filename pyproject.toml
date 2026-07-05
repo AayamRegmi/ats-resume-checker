@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cv-grader"
+name = "ats-resume-checker"
 version = "0.1.0"
 description = "Grade a resume the way real ATS parsers, recruiter keyword searches and screening heuristics do - with per-category scores, color-coded findings and impact-ranked fixes."
 readme = "README.md"
@@ -26,7 +26,7 @@ dependencies = [
 cvgrader = "cvgrader.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/AayamRegmi/cv-grader"
+Homepage = "https://github.com/AayamRegmi/ats-resume-checker"
 
 [tool.setuptools.packages.find]
 include = ["cvgrader*"]
