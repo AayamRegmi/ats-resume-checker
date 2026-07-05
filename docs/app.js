@@ -66,11 +66,12 @@ $("btn-strong").addEventListener("click", () => setSample("strong_resume"));
 $("btn-weak").addEventListener("click", () => setSample("weak_resume"));
 
 /* searchable preset picker */
-const CATEGORY_ORDER = ["software", "data-ai", "product-design", "marketing",
+const CATEGORY_ORDER = ["software", "data-ai", "engineering", "product-design", "marketing",
                         "sales-support", "finance", "hr-operations",
                         "health-education", "academic"];
 const CATEGORY_LABELS = {
   "software": "Software & IT", "data-ai": "Data & AI",
+  "engineering": "Engineering & Architecture",
   "product-design": "Product & Design", "marketing": "Marketing & Content",
   "sales-support": "Sales & Customer Success", "finance": "Finance & Accounting",
   "hr-operations": "HR, Operations & Admin", "health-education": "Healthcare & Education",

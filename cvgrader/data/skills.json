@@ -221,6 +221,26 @@
     {"name": "Scholarships & Grants", "aliases": ["scholarship", "fellowship", "research grant", "grant writing", "funding awarded"]},
     {"name": "Conference Presentations", "aliases": ["conference presentation", "poster presentation", "oral presentation", "presented research"]},
     {"name": "LaTeX", "aliases": ["latex", "overleaf"]},
-    {"name": "International Experience", "aliases": ["international experience", "study abroad", "exchange program", "erasmus", "student mobility", "cross-cultural"]}
+    {"name": "International Experience", "aliases": ["international experience", "study abroad", "exchange program", "erasmus", "student mobility", "cross-cultural"]},
+    {"name": "AutoCAD", "aliases": ["autocad", "auto cad", "cad drafting"]},
+    {"name": "Revit", "aliases": ["revit"]},
+    {"name": "Building Information Modeling", "aliases": ["bim", "building information modeling"]},
+    {"name": "SolidWorks", "aliases": ["solidworks", "solid works"]},
+    {"name": "Finite Element Analysis", "aliases": ["ansys", "finite element analysis", "fea", "fem"]},
+    {"name": "Structural Analysis", "aliases": ["structural analysis", "structural design", "load calculations", "structural engineering"]},
+    {"name": "Civil Site Design", "aliases": ["civil site design", "civil 3d", "site design", "grading design", "stormwater design", "drainage design"]},
+    {"name": "Geotechnical Engineering", "aliases": ["geotechnical", "geotechnical engineering", "soil mechanics", "foundation design"]},
+    {"name": "Construction Management", "aliases": ["construction management", "construction administration", "general contracting", "field supervision"]},
+    {"name": "Building Codes & Compliance", "aliases": ["building codes", "ibc", "ada compliance", "code compliance", "zoning compliance"]},
+    {"name": "HVAC Systems", "aliases": ["hvac", "heating ventilation and air conditioning", "mechanical systems design"]},
+    {"name": "Circuit Design", "aliases": ["circuit design", "pcb design", "electrical schematics", "schematic capture"]},
+    {"name": "Power Systems", "aliases": ["power systems", "power distribution", "electrical power engineering", "power electronics"]},
+    {"name": "PLC & Industrial Automation", "aliases": ["plc", "plc programming", "scada", "industrial automation"]},
+    {"name": "GD&T & Manufacturing Engineering", "aliases": ["gd&t", "geometric dimensioning and tolerancing", "manufacturing engineering", "dfm", "design for manufacturing", "cnc", "cnc machining"]},
+    {"name": "Professional Engineer Licensure", "aliases": ["professional engineer", "pe license", "eit", "engineer in training", "fe exam"]},
+    {"name": "Architectural Design", "aliases": ["architectural design", "schematic design", "design development", "construction documents"]},
+    {"name": "Architect Licensure", "aliases": ["registered architect", "ncarb", "aia", "architect license"]},
+    {"name": "Sustainable Design", "aliases": ["leed", "leed accreditation", "sustainable design", "green building"]},
+    {"name": "Surveying", "aliases": ["surveying", "land surveying", "topographic survey"]}
   ]
 }
